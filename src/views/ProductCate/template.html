@@ -1,0 +1,67 @@
+<div class="productCate innerPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-md-block d-none">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb p-0 font-12 bg-transparent">
+            <li class="breadcrumb-item">目前位置 : <a href="javascript:;" @click="goHome">首頁</a></li>
+            <li class="breadcrumb-item active">商品分類</li>
+            <li class="breadcrumb-item active">西藥商品</li>
+            <li class="breadcrumb-item active">化謝作用商品</li>
+            <li class="breadcrumb-item"><a href="javascript:;">{{cate}}</a></li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="col-12">
+      <div class="row cate-product-list bg-white position-relative">
+        <loading 
+          :active.sync="relateShowLoading"
+          :opacity= "loadingOpacity"
+          color="rgba(36, 94, 96,1)"
+          :is-full-page="fullNone"
+          loader="dots"
+        ></loading>
+        <div class="title col-12 d-flex justify-content-between align-items-center">
+          {{cate}}
+          <md-menu md-size="small" md-align-trigger md-direction="bottom-end">
+            <md-button md-menu-trigger class="md-dense md-raised cus-menu-filter-btn">
+              <!-- <md-icon>tune</md-icon> -->
+              <div>人氣商品</div>
+            </md-button>
+            <md-menu-content class="cus-menu-filter">
+              <md-menu-item @click="filterType(1)">人氣商品</md-menu-item>
+              <md-menu-item @click="filterType(2)">銷量</md-menu-item>
+              <md-menu-item @click="filterType(3)">依價格遞增</md-menu-item>
+              <md-menu-item @click="filterType(4)">依價格遞減</md-menu-item>
+            </md-menu-content>
+          </md-menu>
+        </div>
+
+        <div class="col-12">
+          <div class="row pb-4">
+              <div class="product-grid line" v-for="item in data" :key="item.id">
+                <transition name="scale" mode="out-in" appear>
+                  <productItem class="product-cate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+                </transition>  
+              </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+
+    <!-- 客制 pagenation-customer -->
+    <div class="col-12 mt-4">
+      <paginationItem
+        :currentPage='currentPage'
+        :totalPages='totalPages'
+        :perPage='perPage'
+        :count='count'
+        :totalCount='totalCount'
+      />
+    </div>
+   
+  </div>
+</div>

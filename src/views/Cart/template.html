@@ -1,0 +1,100 @@
+<div class="cart innerPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-md-block d-none">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb p-0 font-12 bg-transparent">
+            <li class="breadcrumb-item">目前位置 : <a href="javascript:;">首頁</a></li>
+            <li class="breadcrumb-item active">購物車</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="col-12 cart-box bg-white">
+      <div class="row">
+        <ul class="nav nav-pills justify-content-center cart-menu border-bottom border-color-gary col-12" role="tablist">
+          <li class="nav-item">
+            <a class="nav-link rounded-0 active" data-toggle="pill" href="#cart-direct" role="tab" aria-controls="cart-direct" aria-selected="true">直購</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link rounded-0" data-toggle="pill" href="#cart-joint" role="tab" aria-controls="cart-joint" aria-selected="false">連採</a>
+          </li>
+        </ul> 
+
+        <div class="col-12 tab-content mb-3">
+          <div class="tab-pane fade show active" id="cart-direct" role="tabpanel" aria-labelledby="cart-direct">
+            <cartListBox 
+              v-for="item in cartList" 
+              :key="item.id"
+              :productID="item.id"
+              :productCusID="item.idModel"
+              :productName="item.title"
+              :originPrice="item.oPrice"
+              :price="item.price"
+              :stock="item.stock"
+              :img="item.url"
+            />
+
+            <div class="row border-bottom border-color-gary">
+              <div class="col-12 d-flex justify-content-end section">
+                <div class="">
+                  <div class="section-total">共 2 項商品，數量 2 個，總金額 2000元</div>
+                  <div class="section-cargo text-right mt-2">運費: <span class="font-color-darkblue">滿500元免運費</span></div>
+                </div>
+              </div>     
+            </div>
+
+            <div class="row border-bottom border-color-gary">
+              <div class="col-12 d-flex justify-content-start justify-content-xl-between align-items-start align-items-xl-center flex-column flex-lg-row">
+                <div class="d-flex align-items-start align-items-sm-center flex-column flex-sm-row section">
+                  <div class="title font-14 mb-3 mb-sm-0">付款方式: </div>
+                  <v-select 
+                    class="ml-3 cus-vueselect cus-vueselect-180" placeholder="選擇付款方式" 
+                    v-model="paySelected" 
+                    :options="payOptions">
+                    <span slot="no-options">沒有資料</span>
+                  </v-select>
+                </div>
+
+                <div class="rwdline d-block d-lg-none bg-color-gray"></div>
+
+                <div class="d-flex rwd-invoice-fix ml-0 ml-lg-5 align-items-start align-items-xl-center flex-column flex-sm-row section">
+                  <div class="title font-14 mb-3 mb-sm-0">發票寄送地址: </div>
+                  <div class="radio ml-3 d-flex align-items-enter flex-xl-row flex-column">
+                    <md-radio v-model="invoice" value="0" class="font-14 md-primary labelMB-0">個人發票</md-radio>
+                    <div class="d-flex align-items-center">
+                      <md-radio v-model="invoice" value="1" class="font-14 md-primary labelMB-0">公司發票</md-radio>
+                      <input type="text" class="cusInput">
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <md-radio v-model="invoice" value="2" class="font-14 md-primary labelMB-0">捐贈發票</md-radio>
+                      <v-select 
+                        class="cus-vueselect cus-vueselect-180" placeholder="選擇捐贈單位" 
+                        v-model="donateSelected" 
+                        :options="donateOptions">
+                        <span slot="no-options">沒有資料</span>
+                      </v-select>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 d-flex justify-content-center align-items-center flex-column flex-sm-row my-sm-5 my-3">
+                <buttonType class="goShop" btnStr="繼續購物" @stepGo="shopping"/>
+                <buttonType class="goCart ml-sm-5 ml-0 mt-3 mt-sm-0" btnStr="送出訂單" @stepGo="goPay"/>
+              </div>
+            </div>
+
+          </div>
+          <div class="tab-pane fade" id="cart-joint" role="tabpanel" aria-labelledby="cart-joint">
+            連採
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

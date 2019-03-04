@@ -5,12 +5,29 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "api": "json-server --watch api/data.json --port 5000",
+    "start": "npm run api | npm run serve"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bootstrap": "^4.3.1",
+    "jquery": "^3.3.1",
+    "luxon": "^1.11.3",
+    "popper.js": "^1.14.7",
     "vue": "^2.6.6",
+    "vue-axios": "^2.1.4",
+    "vue-carousel": "^0.18.0-alpha",
+    "vue-datetime": "^1.0.0-beta.10",
+    "vue-lazyload": "^1.2.6",
+    "vue-loading-overlay": "^3.2.0",
+    "vue-material": "^1.0.0-beta-10.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vue-select": "^2.5.1",
+    "vue-slick": "^1.1.15",
+    "vue-swal": "^1.0.0",
+    "vuex": "^3.0.1",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.4.0",

@@ -1,0 +1,59 @@
+@import '../../assets/scss/customer/utilty';
+
+.slick-arrow{
+  text-shadow: 0px 0px 2px rgba(0,0,0,.5);
+  border:none;
+  color:#fff !important;
+  // background-color: rgba(white, .8) !important;  
+  background-color: rgba($cus-green, .8) !important;  
+  position: absolute;
+  z-index: 1;
+  cursor: pointer;
+  >i{
+    font-size: 30px;
+  }
+  &.slick-prev{
+    left: 0;
+    width: 30px;
+    height: 30px;
+    box-shadow: 1px 1px 1px rgba(0,0,0,.1);
+    &::before{
+      display: none;
+    }
+  }
+  &.slick-next{
+    right: 0;
+    width: 30px;
+    height: 30px;
+    box-shadow: -1px 1px 1px rgba(0,0,0,.1);
+    &::before{
+      display: none;
+    }
+  }
+}
+
+ul.slick-dots{
+  bottom: 0;
+  padding-bottom:10px;
+  li button:before{
+    color:#fff;
+    font-size: 15px;
+    text-shadow: 0px 0px 2px rgba(0,0,0,.5);
+    opacity: 1;
+  }
+}
+.slick-dots li.slick-active button:before ,
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before {
+  color: $cus-menuBar-up;
+  text-shadow: none;
+  opacity: 1;
+}
+
+@media screen and (min-width: 768px) {
+  .slick-arrow{
+    &.slick-prev{
+      left: -100%;
+    }
+  }
+}

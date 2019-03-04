@@ -1,0 +1,86 @@
+<div class="orderCheck innerPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-md-block d-none">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb p-0 font-12 bg-transparent">
+            <li class="breadcrumb-item">目前位置 : <router-link :to="{name: 'home'}">首頁</router-link></li>
+            <li class="breadcrumb-item active">訂單資訊</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="col-12 bg-white order-box">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-center align-items-center orderStatus border-bottom border-color-gary">
+          <div class="d-flex">
+            <div class="img mr-3">
+              <img src="/static/img/order-checked.png" class="img-fluid" alt="">
+            </div>
+            <div class="info d-flex flex-column justify-content-between">
+              <div class="font-14 font-color-lightblue">訂單編號: 201901140003213</div>
+              <div class="font-14">己收到您的訂購資訊，感謝您訂購兆福聯採的優質顫品！ <br>您可以隨時前往 會員中心 > 我的訂單 查看配送狀態。</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <div class="font-14 font-color-lightblue my-3">訂單編號: 201901140003213</div>
+          <div class="row">
+            <div class="col-12">
+              <table class="table  border cus-table">
+                <thead class="thead-light">
+                  <tr class="text-center font-14">
+                    <th>出貨單</th>
+                    <th>付款方式</th>
+                    <th>物流方式</th>
+                    <th>物流狀態</th>
+                    <th>狀態</th>
+                    <th>動作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center font-14">
+                    <th scope="row">201901140003211</th>
+                    <td>貨到付款</td>
+                    <td>米羅藥局寄送</td>
+                    <td>撿貨中</td>
+                    <td>出貨中</td>
+                    <td>
+                      <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                    </td>
+                  </tr>
+                  <tr class="text-center font-14">
+                    <th scope="row">201901140003212</th>
+                    <td>取貨付款</td>
+                    <td>東京平台共通物流</td>
+                    <td>訂單出貨</td>
+                    <td>出貨中</td>
+                    <td>
+                      <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                    </td>
+                  </tr>
+                  <tr class="text-center font-14">
+                    <th scope="row">201901140003213</th>
+                    <td>取貨付款</td>
+                    <td>神奇平台共通物流</td>
+                    <td>訂單出貨</td>
+                    <td>出貨中</td>
+                    <td>
+                      <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="d-flex justify-content-center">
+                <buttonType class="goShop my-5" btnStr="繼續購物" @stepGo="shopping"/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

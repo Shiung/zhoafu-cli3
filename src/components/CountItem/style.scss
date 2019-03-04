@@ -1,0 +1,56 @@
+@import '../../assets/scss/customer/utilty';
+$btn-top : #fcfefe ; 
+$btn-bottom : #f4f6f8 ;
+
+.countItem{
+  border: 1px solid darken($btn-bottom, 10%);
+  border-radius: 5px;
+  overflow: hidden;
+  >li{
+    background: linear-gradient(180deg, $btn-top 0%, $btn-bottom 100%);
+    // background-color: #ccc;
+    padding:5px;
+    &:nth-last-of-type(2){
+      border-right: 1px solid darken($btn-bottom, 10%);
+      border-left: 1px solid darken($btn-bottom, 10%);
+    }
+    &.countShow{
+      min-width: 34px;
+      >input{
+        width: 40px;
+        height: 20px;
+        font-size: 14px;
+        // min-width: 50px;
+        text-align: center;
+        background-color: transparent;
+        border: none;
+      }
+    }
+    &.count-controlBtn{
+      cursor: pointer;
+      user-select: none;
+      color:$cus-green;
+      padding: 0;
+      width: 34px;
+      height: 34px;
+      >i{
+        font-size: 20px;
+      }
+      &.disabled{
+        color: #cfcfcf;
+      }
+    }
+  }
+}
+
+input:focus{
+  outline: none;
+}
+// 移除 input number 上下按鈕
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"]{
+  -moz-appearance: textfield;
+}

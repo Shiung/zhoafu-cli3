@@ -1,0 +1,18 @@
+@import './utilty';
+
+.VueCarousel-dot:focus,
+.VueCarousel-navigation-button:focus{
+  outline: none !important;
+}
+.VueCarousel-navigation-prev{
+  transform: translate(0, -50%) !important;
+}
+.VueCarousel-navigation-next{
+  transform: translate(0, -50%) !important;
+}
+.VueCarousel-navigation-button{
+  color:$customer !important;
+}
+.VueCarousel-navigation--disabled{
+  visibility: hidden;
+} 

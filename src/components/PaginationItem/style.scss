@@ -1,0 +1,46 @@
+@import '../../assets/scss/customer/utilty';
+.paginationItem{
+  // 客制pagination
+  &.customer-pagination{
+    ul{
+      justify-content: center;
+      li{
+        .pageShow{
+          .md-button{
+            min-width: auto;
+            color:#fff;
+            border-radius: 50px;
+            outline: none;
+            &:hover{
+              &::before{
+                background-color: lighten($customer, 10%);
+              }
+            }
+          }
+        }
+        a.page-link{
+          background-color: transparent;
+          border-color: transparent;
+          border-radius: 50%;
+          text-decoration: none;
+          outline: none;
+          box-shadow: none;
+          margin: 0 2px;
+          border: none;
+        }
+        &.active{
+          a{
+            background-color: $customer;
+            color:#fff;
+          }
+        }
+        &:hover:not(.disabled){
+          a{
+            background-color: lighten($customer,30%) ;
+            color:#fff;
+          }
+        }
+      }
+    }
+  }
+}

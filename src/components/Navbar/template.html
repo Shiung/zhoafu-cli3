@@ -1,0 +1,208 @@
+<nav class="navbar navbar-expand fixed-top" :class="{'rwdSwitchOn' : menuStatus}">
+  <div class="container d-flex justify-content-center justify-content-md-between rwd-full" style="padding:0 15px;">
+    <div class="logo"><img class="w-100" src="../../../public/img/zhoafu_logo.png" alt=""></div>
+  
+    <div class="rwd-menu-btn d-md-none" @click="menu_status(true)"><i class="material-icons">menu</i></div>
+    <div class="rwd-shadow d-md-none" v-if="menuStatus" @click="menu_status(false)"></div>
+    <div class="rwd-menu" :class="{ 'witchOn' : menuStatus }">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:;" @click="goHome">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"  fill="currentColor"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 5.69l5 4.5V18h-2v-6H9v6H7v-7.81l5-4.5M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z"/></svg>
+          </a>
+          <div class="line"></div>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" :to="{name : 'cart' }">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M15.55 13c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.37-.66-.11-1.48-.87-1.48H5.21l-.94-2H1v2h2l3.6 7.59-1.35 2.44C4.52 15.37 5.48 17 7 17h12v-2H7l1.1-2h7.45zM6.16 6h12.15l-2.76 5H8.53L6.16 6zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </router-link>
+          <div class="line"></div>
+        </li>
+        <li class="nav-item">
+            <router-link class="nav-link" :to="{name : 'memCenter' }">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"  fill="currentColor"><path fill="none" d="M0 0h24v24H0V0z"/><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/></svg>
+            </router-link>
+            <div class="line"></div>
+        </li>
+      </ul> 
+      <div class="menu-option">
+        <div class="container d-flex justify-content-between align-items-center flex-md-row flex-column-reverse rwd-full rwd-pd-0">
+          <!-- 桌機 -->
+          <ul class="navbar-nav mr-auto flex-md-row flex-column d-md-flex d-none">
+            <li class="nav-item position-relative" @click="showMenu" :class="{active : showMenuBoxSwitch}">
+              <a class="nav-link" href="javascript:;">商品分類</a>
+              <i class="material-icons d-md-none rwd-arrow">keyboard_arrow_right</i>
+              <!-- <ul class="secondMenu">
+                <li class="d-flex justify-content-between align-items-center" v-for="(item, key) in productCateList" :key="item.id">
+                  <div class="menu-img">
+                    <img src="/public/img/menu-1.png" class='img-fluid w-100' alt="">
+                  </div>
+                  <a class="nav-link" href="javascript:;">{{item.name}}</a>
+                  <i class="material-icons">keyboard_arrow_right</i>
+                  <ul class="thirdMenu">
+                    <li class="d-flex justify-content-between align-items-center pl-2" v-for="item2 in item.child" :key="item2.id">
+                        <a class="nav-link text-nowrap" href="javascript:;">{{item2.name}}</a>
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </li>
+                  </ul>
+                </li>
+              </ul>   -->
+            </li>
+            <li class="nav-item position-relative">
+              <a class="nav-link" href="javascript:;">健康諮訊</a>
+            </li>
+            <li class="nav-item position-relative">
+              <a class="nav-link" href="javascript:;">特價商品</a>
+            </li>
+            <li class="nav-item position-relative">
+              <a class="nav-link" href="javascript:;">整店共藥</a>
+            </li>
+          </ul>
+
+          <!-- rwd 內容 -->
+          <div class="rwdMenuBox d-md-none position-relative">
+            <div class="rwd-nav-guide bg-white shadow-sm position-relative d-flex justify-content-center align-items-center">
+              <transition name="returnBack" mode="out-in" appear>
+                <div class="rwd-return d-flex align-items-center" @click="rwdMenuBack" v-if="rwdMenuStep > 0"><i class="material-icons d-md-none rwd-arrow">keyboard_arrow_left</i>返回</div>
+              </transition>  
+              {{rwdMenuGuide}}
+            </div>
+              
+            <ul class="navbar-nav mr-auto flex-md-row flex-column rwd-menu-1" :class="{'rwdMenuClose' : rwdMenuStep >= 1}">
+              <li class="nav-item position-relative" @click="rwdHandler(1, null,'商品分類')">
+                <a class="nav-link" href="javascript:;">商品分類</a>
+                <i class="material-icons d-md-none rwd-arrow">keyboard_arrow_right</i>
+              </li>
+              <li class="nav-item position-relative">
+                <a class="nav-link" href="javascript:;">健康諮訊</a>
+              </li>
+              <li class="nav-item position-relative">
+                <a class="nav-link" href="javascript:;">特價商品</a>
+              </li>
+              <li class="nav-item position-relative">
+                <a class="nav-link" href="javascript:;">整店共藥</a>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav mr-auto flex-md-row flex-column rwd-menu-2" 
+                :class="{'rwdMenuOpen' : rwdMenuStep == 1, 'rwdMenuClose' : rwdMenuStep == 2}"
+            >
+              <loading 
+                :active.sync="menuListShowLoading"
+                color="rgba(36, 94, 96,1)"
+                :opacity= "loadingOpacity"
+                :is-full-page="fullNone"
+                loader="dots"
+              ></loading>
+              <li class="nav-item position-relative" v-for="item in productCateListFirst" :key="item.id" @click="rwdHandler(2, item.id, item.name)">
+                <a class="nav-link" href="javascript:;">{{item.name}}</a>
+                <i class="material-icons d-md-none rwd-arrow">keyboard_arrow_right</i>
+              </li>
+            </ul>
+            <ul class="navbar-nav mr-auto flex-md-row flex-column rwd-menu-3" :class="{'rwdMenuOpen' : rwdMenuStep == 2 ,'rwdMenuClose' : rwdMenuStep == 3}">
+              <loading 
+                :active.sync="menuListSecondShowLoading"
+                color="rgba(36, 94, 96,1)"
+                :opacity= "loadingOpacity"
+                :is-full-page="fullNone"
+                loader="dots"
+              ></loading>
+              <li class="nav-item position-relative" v-for="item in productCateListSecond" :key="item.id" 
+                  @click="rwdHandler(3, item.id, item.name)"
+              >
+                <a class="nav-link" href="javascript:;">{{item.name}}</a>
+                <i class="material-icons d-md-none rwd-arrow">keyboard_arrow_right</i>
+              </li>
+            </ul>
+            <ul class="navbar-nav mr-auto flex-md-row flex-column rwd-menu-4" :class="{'rwdMenuOpen' : rwdMenuStep == 3}">
+              <loading 
+                :active.sync="menuListThirdShowLoading"
+                color="rgba(36, 94, 96,1)"
+                :opacity= "loadingOpacity"
+                :is-full-page="fullNone"
+                loader="dots"
+              ></loading>
+              <li class="nav-item position-relative" v-for="item in productCateListThird" :key="item.id">
+                <a class="nav-link" href="javascript:;" @click="goCatePage(item.id)">{{item.name}}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="search mr-md-1 mr-0">
+            <div class="search-box d-flex">
+              <input class="search-txt" type="text" name="" placeholder="搜尋商品名稱 / 國際條碼 / 商家">
+              <button type="button" class="search-btn"><i class="material-icons">search</i></button>
+            </div>
+          </div>
+        </div>    
+      </div>
+
+      <button type="button" class="close close-btn d-md-none" aria-label="Close" @click="menu_status(false)">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    
+  </div>  
+  
+  <transition name="navShow" mode="out-in" appear>
+    <div class="showMenuBox d-md-block d-none" v-if="showMenuBoxSwitch">
+      <div class="container rwd-full">
+        <ul class="secondMenu mb-0 position-relative">
+          <loading 
+            :active.sync="menuListShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          ></loading>
+          <li class="d-flex justify-content-between align-items-center pl-3" v-for="item in productCateListFirst" :key="item.id" :class="{active : showMenuBoxActive == item.id}"  @click="showMenuSecond(item.id)">
+              <a class="nav-link" href="javascript:;">{{item.name}}</a>
+              <i class="material-icons">keyboard_arrow_right</i>
+          </li>
+
+          <transition name="fade" mode="out-in" appear>
+            <ul class="thirdMenu" v-if="showMenuBoxSecondSwitch">
+              <loading 
+                :active.sync="menuListSecondShowLoading"
+                color="#fff"
+                :opacity= "loadingOpacityZero"
+                :is-full-page="fullNone"
+                loader="dots"
+              ></loading>
+              <li class="d-flex justify-content-between align-items-center pl-2" v-for="item2 in productCateListSecond" :key="item2.id" :class="{active : showMenuBox2Active == item2.id}"  @click="showMenuThird(item2.id)">
+                  <a class="nav-link text-nowrap" href="javascript:;">{{item2.name}}</a>
+                  <i class="material-icons">keyboard_arrow_right</i>
+              </li>
+            </ul>
+          </transition>
+
+          <transition name="fade" mode="out-in" appear>
+            <div class="forthMenu d-flex" v-if="showMenuBoxThirdSwitch">
+              <ul class="forthMenuUL">
+                <loading 
+                  :active.sync="menuListThirdShowLoading"
+                  color="#fff"
+                  :opacity= "loadingOpacityZero"
+                  :is-full-page="fullNone"
+                  loader="dots"
+                ></loading>
+                <li class="d-flex justify-content-start align-items-center" v-for="item3 in productCateListThird" :key="item3.id">
+                    <a class="nav-link text-nowrap flex-fill" href="javascript:;" @click="goCatePage(item3.id)">{{item3.name}}</a>
+                </li>
+              </ul>
+              <div class="flex-fill col-12 pt-3 ml-3">
+                  <div class="bg-white mb-3" v-for="item in navAdList" :key="item.id">
+                      <transition name="fade" mode="out-in" appear>
+                        <imgLazyLoading class="navAdBox" :imgUrl="item.url" imgError="/img/image_error_3x1.png"/>
+                      </transition> 
+                  </div>
+              </div>
+            </div>
+          </transition>
+        </ul>
+        
+      </div>
+      <div class="navShow-shadow" @click="showMenuBoxSwitch = false"></div>
+    </div>
+  </transition>
+
+</nav>

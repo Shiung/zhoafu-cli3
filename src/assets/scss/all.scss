@@ -1,0 +1,240 @@
+@import "~bootstrap/scss/_functions.scss";
+@import "./customer/_utilty";
+@import "./customer/_variables";
+@import "~bootstrap/scss/bootstrap.scss";
+
+//vue transition 換頁動畫
+@import "./customer/_vuetransition";
+//vue lazyloading
+@import "./customer/_lazyloading";
+
+@import "./customer/_slick.scss";
+
+// vue overlay loading
+@import '~vue-loading-overlay/dist/vue-loading.css';
+// vue-slick
+@import '~slick-carousel/slick/slick.css';
+@import '~slick-carousel/slick/slick-theme.css';
+// vue-carousel
+@import './customer/vueCarousel';
+
+
+//vue-material customer
+@import '~vue-material/dist/vue-material.min.css';
+@import "~vue-material/dist/theme/engine"; // Import the theme engine
+@include md-register-theme("default", (
+  primary: $cus-green,//md-get-palette-color(blue, A200), // The primary color of your application
+  accent: #448aff //md-get-palette-color(red, A200) // The accent or secondary color
+));
+@import "~vue-material/dist/components/MdField/theme";
+@import "~vue-material/dist/components/MdButton/theme";
+@import "~vue-material/dist/components/MdRadio/theme";
+@import "~vue-material/dist/components/MdMenu/theme";
+@import "~vue-material/dist/components/MdList/theme";
+@import "~vue-material/dist/components/MdDialog/theme";
+@import "~vue-material/dist/components/MdSwitch/theme";
+
+// vue datetime ------------------
+@import '~vue-datetime/dist/vue-datetime.css';
+.vdatetime-overlay{
+  z-index: 1031;
+}
+.vdatetime-popup{
+  z-index: 1032;
+}
+.theme-customer .vdatetime-popup__header,
+.theme-customer .vdatetime-calendar__month__day--selected > span > span,
+.theme-customer .vdatetime-calendar__month__day--selected:hover > span > span {
+  background: $customer;
+}
+
+.theme-customer .vdatetime-year-picker__item--selected,
+.theme-customer .vdatetime-time-picker__item--selected,
+.theme-customer .vdatetime-popup__actions__button {
+  color: $customer;
+}
+// vue datetime ------------------end
+
+// 解決vue material 字體圓滑修飾的效果不佳
+body{
+  -webkit-font-smoothing: auto;
+}
+
+// google fonts 中文
+// @import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC');
+// html,body{
+//   font-family: 'Noto Sans TC', sans-serif;
+// }
+
+//  rwd 點選視窗放大問題
+input, textarea {
+  font-size: initial !important;  
+}
+
+button:focus{
+  outline: none;
+}
+input.cusInput:focus{
+  outline: 3px solid rgba($cus-green, .5);
+}
+
+#app{
+  overflow: hidden;
+}
+
+.font-12{
+  font-size: 12px;
+}
+
+.font-14{
+  font-size: 14px;
+}
+
+.font-color-darkblue{
+  color:$cus-menuBar-second;
+}
+.font-color-lightblue{
+  color:$cus-lightblue;
+}
+.font-color-gray{
+  color:$cus-FontColor-gray;
+}
+.font-color-red{
+  color:$cus-red;
+}
+.border-color-gary{
+  border-color: lighten($cus-FontColor-gray , 18%) !important;
+}
+.bg-color-gray{
+  background-color: lighten($cus-FontColor-gray , 18%);
+}
+
+.bg-transparent{
+  background-color: transparent;
+}
+
+a:not(.md-button){
+  &:hover{
+     text-decoration: none !important;
+  }
+}
+
+
+// boostrap input
+.cus-input{
+  &:focus{
+    box-shadow: none;
+    border-color:$cus-green;
+  }
+  &.cus-with-250{
+    width: 250px;
+  }
+}
+
+
+// 內頁 高度
+.innerPage{
+  min-height: 100vh;  
+  padding: 15px 15px 50px 15px;
+  @media screen and (max-width: 767px) {
+    .container{
+      max-width: 100%;
+      padding: 0;
+    } 
+  }
+}
+
+
+// fix label mb
+.labelMB-0{
+  >label{
+     margin-bottom: 0;
+  }
+}
+
+// vue select fix 套件style start ------
+.cus-vueselect{
+  font-size:12px;
+  input{
+    height: 25px;
+  }
+  .dropdown-toggle{
+    &::after{
+      display: none;
+    }
+  }
+  .dropdown-menu{
+    border-color:$cus-green;
+  }
+  .vs__actions{
+    .clear{
+      color:$cus-green;
+    }
+    .open-indicator:before{
+      border-color:$cus-green;
+    }
+  }
+  &.open{
+    .dropdown-toggle{
+      border-color:$cus-green;
+    }
+  }
+}
+.cus-vueselect-180{
+  width: 160px;
+}
+// vue select fix 套件style end -------
+
+
+// vue material fix
+// md-menu (商品分類裡過濾器)
+$btn-top : #fcfefe ; 
+$btn-bottom : #f4f6f8 ;
+.cus-menu-filter-btn{
+  background: linear-gradient(180deg, $btn-top 0%, $btn-bottom 100%) !important;
+  color:#888 !important;
+}
+.cus-menu-filter{
+  .md-menu-content-container{
+    .md-list-item-content{
+      font-size:12px;
+      min-height:30px;
+    }
+  }
+}
+// vue material fix-----end
+
+// table cus
+.cus-table{
+  thead{
+    th:not(:last-child){
+      position: relative;
+      &::after{
+        content: '';
+        display: block;
+        width: 1px;
+        height: 50%;
+        background-color: #ccc;
+        position: absolute;
+        top:50%;
+        right: 0;
+        transform: translate(-50%, -50%); 
+      }
+    }
+  }
+  tbody{
+    tr:nth-of-type(even){
+      background-color: #f8f8f8;
+    }
+  }
+
+  // 功能按鈕
+  .cus-btn{
+    border-radius: 20px;
+    overflow: hidden;
+    background-color: $cus-menuBar-bg;
+    color: $cus-menuBar-up;
+    border:none;
+    cursor: pointer;
+  }
+}

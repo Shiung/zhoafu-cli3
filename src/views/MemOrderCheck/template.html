@@ -1,0 +1,88 @@
+<div class="memOrderCheck">
+  
+  <ul class="nav nav-pills cart-menu border-bottom border-color-gary col-12" role="tablist">
+    <li class="nav-item ml-5">
+      <a class="nav-link rounded-0 active" data-toggle="pill" href="#cart-direct" role="tab" aria-controls="cart-direct" aria-selected="true">直購</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link rounded-0" data-toggle="pill" href="#cart-joint" role="tab" aria-controls="cart-joint" aria-selected="false">連採</a>
+    </li>
+  </ul> 
+  
+  <div class="tab-content mb-3">
+      <div class="tab-pane fade show active" id="cart-direct" role="tabpanel" aria-labelledby="cart-direct">
+        <div v-for="item in 2" :key="item">
+          <div class="font-14 font-color-lightblue my-3">訂單編號: 201901140003213-{{item}}</div>
+          <div class="row">
+            <div class="col-12">
+              <table class="table  border cus-table">
+                <thead class="thead-light">
+                  <tr class="text-center font-14">
+                    <th>出貨單</th>
+                    <th>付款方式</th>
+                    <th>物流方式</th>
+                    <th>物流狀態</th>
+                    <th>狀態</th>
+                    <th>發票號碼</th>
+                    <th>金額</th>
+                    <th>動作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="text-center font-14">
+                    <th scope="row">201901140003211</th>
+                    <td>貨到付款</td>
+                    <td>米羅藥局寄送</td>
+                    <td>撿貨中</td>
+                    <td>出貨中</td>
+                    <td>GN45789937</td>
+                    <td>130000</td>
+                    <td>
+                        <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                        <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">驗收</md-ripple></button>
+                        <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">問題單</md-ripple></button>
+                    </td>
+                  </tr>
+                  <tr class="text-center font-14">
+                    <th scope="row">201901140003212</th>
+                    <td>取貨付款</td>
+                    <td>東京平台共通物流</td>
+                    <td>訂單出貨</td>
+                    <td>出貨中</td>
+                    <td>GN45789937</td>
+                    <td>130000</td>
+                    <td>
+                      <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                    </td>
+                  </tr>
+                  <tr class="text-center font-14">
+                    <th scope="row">201901140003213</th>
+                    <td>取貨付款</td>
+                    <td>神奇平台共通物流</td>
+                    <td>訂單出貨</td>
+                    <td>出貨中</td>
+                    <td>GN45789937</td>
+                    <td>130000</td>
+                    <td>
+                      <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- <div class="d-flex justify-content-center">
+                <buttonType class="goShop my-5" btnStr="繼續購物" @stepGo="shopping"/>
+              </div> -->
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="cart-joint" role="tabpanel" aria-labelledby="cart-joint">
+        連採
+      </div>
+  </div>
+
+</div>

@@ -1,0 +1,131 @@
+<div class="memInfo">
+  <div class="row">
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">藥局編號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">藥局名稱:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">登入帳號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">負責人:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="col-12">
+      <div class="row">
+        <div class="form-group col-sm-6">
+          <label class="font-14" for="formGroupExampleInput">聯絡人:</label>
+          <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+        </div>
+      </div>
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">聯絡電話:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">聯絡手機:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">電子信箱:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">備用電子信箱:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">醫療機構代碼:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">統一編號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">管制登號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-12">
+      <label class="font-14 w-100" for="formGroupExampleInput">是否連鎖店:</label>
+      <md-switch v-model="multiShop" class="md-primary switch-fix"></md-switch>
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">原業務人員:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">業務人員:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">核准日期:</label>
+      <datetime 
+        v-model="approvedDate"
+        type="date"
+        input-class="form-control form-control-sm cus-input"
+        class="theme-customer"
+        placeholder="選擇日期"
+      >
+      </datetime>
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">入會日期:</label>
+      <datetime 
+        v-model="joinDate"
+        type="date"
+        input-class="form-control form-control-sm cus-input"
+        class="theme-customer"
+        placeholder="選擇日期"
+      >
+      </datetime>
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14 w-100" for="formGroupExampleInput">核准與否:</label>
+      <md-switch v-model="approvement" class="md-primary switch-fix"></md-switch>
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">發票種類:</label>
+      <v-select 
+        class="cus-vueselect cus-vueselect-180" placeholder="選擇發票" 
+        v-model="invoiceSelected" 
+        :options="invoiceOptions">
+        <span slot="no-options">沒有資料</span>
+      </v-select>
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">發票抬頭:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div> 
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">採購卡卡號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">持卡人姓名:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div> 
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">採購卡帳號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">推薦序號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div> 
+    <div class="form-group col-sm-6">
+      <label class="font-14" for="formGroupExampleInput">推薦人序號:</label>
+      <input type="text" class="form-control form-control-sm cus-input" id="formGroupExampleInput" placeholder="Example input">
+    </div>
+  </div> 
+
+  <div class="col-12 d-flex justify-content-center align-items-center">
+      <buttonType class="goShop my-5" btnStr="儲存" @stepGo="save"/>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+@import '../../assets/scss/customer/utilty';
+
+.cartListBox{
+  .first-area{
+    .cart-list-img{
+      flex: 100px;
+      flex-grow: 0;
+      margin-right: 15px;
+    }
+    .cart-list-title{
+      flex:1 ;
+      .cart-list-title-1{
+        .porduct-price{
+          .lineThrough{
+            text-decoration: line-through;
+          }
+        }
+      }
+      .cart-list-title-2{
+        .vendor{
+          color:$cus-lightblue;
+        }
+      }
+    }
+  }
+  .second-area{
+    .delete-btn{
+      padding: 15px;
+      i{
+        font-size: 30px !important;
+      }
+      .delete-word{
+        letter-spacing: 5px;
+      }
+    }
+    .cargoInfo{
+      .cargoImg{
+        width: 25px;
+        color:$cus-green;
+      }
+    }
+    .starInfo{
+      .starImg{
+        width: 25px;
+        color:$cus-green;
+      }
+    }
+  }
+
+  @media screen and (max-width: 991px){
+    .first-area{
+      border-right: none!important;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../assets/scss/customer/utilty';
+.memCenter{
+
+  // 側邊選單
+  .mem-cate-box{
+    flex: 165px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    .mem-cate{
+      background-color: $cus-green;
+      // height: 300px;
+      >nav.nav{
+        padding:20px 0 20px 20px;
+        a.nav-link{
+          background-color: transparent;
+          color:#fff;
+          transition: .3s;
+          &:hover{
+            color: $cus-menuBar-second;
+            background-color: #fff;
+          }
+          &.router-link-exact-active{
+            color: $cus-menuBar-second;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .mem-cate-box{
+      flex:1;
+      .mem-cate{
+        background-color: $cus-menuBar-bg;
+        padding: 0 10px;
+        >nav.nav{
+          padding: 10px 0;
+          a.nav-link{
+            border-radius: 20px; 
+            &:not(:first-child){
+              margin-left:10px;
+            }
+            background-color: $cus-green;
+          }
+        }
+      }
+    }
+    .rwd-nav{
+      flex-wrap: nowrap;
+      overflow-x: auto;
+    }
+  }
+}

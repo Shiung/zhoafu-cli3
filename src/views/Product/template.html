@@ -1,0 +1,156 @@
+<div class="product innerPage">
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-md-block d-none">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb p-0 font-12 bg-transparent">
+            <li class="breadcrumb-item">目前位置 : <a href="javascript:;" @click="goHome">首頁</a></li>
+            <li class="breadcrumb-item active">商品分類</li>
+            <li class="breadcrumb-item active">西藥商品</li>
+            <li class="breadcrumb-item active">化謝作用商品</li>
+            <li class="breadcrumb-item"><a href="javascript:;">維他命劑</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{productTitle}}</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+
+    <div class="col-12">
+      <div class="product-box bg-white row">
+        <div class="col-lg-5 offset-lg-0 col-sm-6 offset-sm-3">
+          <transition name="fade" mode="out-in" appear>
+            <imgLazyLoading class="productItemImg" :imgUrl="productImg" v-if="showImg"/>
+          </transition>
+
+          <div class="productImgSelects d-flex">
+            <div 
+              class="imgs border" 
+              v-for="item in imgList" 
+              :key="item.url" 
+              :class="{'active' : productImg == item.url}"
+              @click="imgActive(item.url)"
+            >
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="productItemImg" :imgUrl="item.url"/>
+              </transition>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="productContent">
+            <div class="product-title">{{productTitle}}</div>
+            <div class="subDescribe">
+              <ul class="sublist">
+                <li>16顆橘子的維他命C</li>
+                <li>葡萄糖胺乳酸鈣1000mg</li>
+                <li>碳酸鈣327mg</li>
+              </ul>
+            </div>
+            <div class="productBuy border border-right-0 border-left-0 border-color-gary d-flex justify-content-between align-items-center flex-column flex-sm-row">
+              <div class="qp-area">
+                <div class="price">
+                  <span class="o-price"><span class="lineThrough">售價: 600</span><span class="mx-2">/</span></span>
+                  <span class="n-price">優惠價: <span class="text-danger">500</span></span>
+                </div>
+                <div class="qty mt-sm-4 mt-2 d-flex align-items-center justify-content-start">
+                  <span class="select-qty">數量: </span>
+                  <countItem
+                    class="mx-2"
+                    :max="10"
+                    :count="countNum"
+                    @changeData="countNumChange"
+                  />
+                  <span class="product-qty">庫存數量: 1000瓶</span>
+                </div>
+              </div>
+              
+              <buttonType class="goCart rwd-100 mt-2 mt-sm-0" btnStr="直購" @stepGo="goCart"/>
+            </div>
+
+            <div class="joint-procurement-area border border-top-0 border-right-0 border-left-0 border-color-gary">
+              <div class="progress-area">
+
+              </div>
+              <div class="joint-procurement-expiry d-flex justify-content-between align-items-center">
+                <div class="expiry d-sm-block d-flex flex-column">到期時間：<span>2019/01/25 ~ 2019/02/15 00時</span></div>
+                <button class="info-btn d-flex justify-content-center align-items-center"><i class="material-icons">priority_high</i></button> 
+              </div>
+              <buttonType class="jointCart" btnStr="聯合採購" @stepGo="goJointCart"/>
+              <div class="cargo-info">
+                配送方式：快速到貨 / 離島配送超商取貨
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="col-12">
+          <ul class="nav nav-pills product-cate-menu border border-color-gary" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link rounded-0" data-toggle="pill" href="#product-spec" role="tab" aria-controls="product-spec" aria-selected="false">商品規格</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-0 active" data-toggle="pill" href="#return-info" role="tab" aria-controls="return-info" aria-selected="true">退/換貨需知</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-0" data-toggle="pill" href="#ref-cate" role="tab" aria-controls="ref-cate" aria-selected="false">相關類別</a>
+            </li>
+          </ul>
+          <div class="product-cate-box col-12 position-relative border border-top-0 border-color-gary tab-content">
+            <div class="tab-pane fade" id="product-spec" role="tabpanel" aria-labelledby="product-spec-tab">
+              商品規格
+            </div>
+            <div class="tab-pane fade show active" id="return-info" role="tabpanel" aria-labelledby="return-info-tab">
+              <div class="title">退換貨須知:</div>
+              <div class="content">商品到貨享十天猶豫期之權益（注意！猶豫期非試用期），辦理退貨商品必須是全新狀態且包裝完整，否則將會影響退貨權限。各類商品退換貨限制說明
+                  下載版序號、珠寶、黃金類訂單之商品暫不提供線上退/換貨，3C類商品暫不提供換貨服務，其它商品僅限換貨1次。
+                  個人衛生用品除商品本身有瑕疵外，未拆封商品仍享有十天猶豫期之退貨權利。但已拆封 (如剪標、下水等情形…)，依據《通訊交易解除權合理例外情事適用
+                  準則》，本公司無法接受退換貨。
+                  ※個人衛生用品項目：內衣褲(含隱形胸罩、胸扥、胸貼、透明肩帶、水餃墊/美胸墊、襯裙)、塑身衣(含馬甲、束褲、束腿、腰夾、內搭)、泳裝、襪子、紙尿褲。
+              </div>
+              <div class="title">運送服務:</div>
+              <div class="content">此商品可配送離島區域，您可於結帳時，選擇離島地址配送。
+                  商品之實際配貨日期、退換貨日期，依我們向您另行通知之內容為準。
+                  針對大型商品(包括：大型家電、家具床墊、健身按摩器材、車類...等)，我們將於完成收款確認後，一天內〈不含例假日〉將會有專人與您確認相關配送細節等的聯繫。偏遠地區、
+                  樓層費及其它加價費用，皆由廠商於約定配送時一併告知，廠商將保留出貨與否的權利。
+              </div>
+            </div>
+            <div class="tab-pane fade" id="ref-cate" role="tabpanel" aria-labelledby="ref-cate-tab">
+              相關類別
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="related-product-box bg-white row mt-5 position-relative">
+        <loading 
+          :active.sync="relateProductShowLoading"
+          color="rgba(36, 94, 96,1)"
+          :opacity= "loadingOpacity"
+          :is-full-page="fullNone"
+          loader="dots"
+        ></loading>
+        <div class="title col-12">
+          相關商品
+        </div>
+        <div class="col-12">
+          <carousel 
+          :autoplay="vueCarouselAuto" 
+          :loop="false"
+          :perPage="vueCarouselPerPage" 
+          :perPageCustom="[[300, 2], [576, 3], [768, 4]]"
+          :navigationEnabled="true"
+          :paginationActiveColor="vueCarouselDotActiveColor"
+          >
+            <slide v-for="item in relateProductList" :key="item.id">
+              <transition name="scale" mode="out-in" appear>
+                <productItem class="product-relate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+              </transition> 
+            </slide>
+          </carousel>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>

@@ -1,0 +1,185 @@
+<div class="indexPage">
+  <div class="w-100 banner-bg mb-5">
+      <!-- <bannerItme :autoplayStatus="true"/> -->
+
+      <div class="container rwd-full rwd-p-0">
+        <div class="row">
+          <div class="col-lg-9 pr-lg-0">
+            <bannerItme :autoplayStatus="false"/>
+          </div>
+
+          <!-- pc 版最新消息 -->
+          <div class="col-lg-3 pl-lg-0 d-lg-block d-none">
+            <ul class="nav nav-pills nav-fill product-cate-menu news-menu">
+              <li class="nav-item">
+                <a class="nav-link rounded-0 active text-left" href="javascript:;">
+                  <span class="news-img"><img src="img/news_icon.png" class="img-fluid w-100" alt=""></span>
+                  最新消息
+                </a>
+              </li>
+            </ul>
+            <div class="news-menu-area-box col-12 mt-0">
+              <div class="news-menu-box d-flex justify-content-start align-items-start" v-for="item in 3">
+                <div class="news-menu-box-date">
+                  <div class="date-y-m">2019/06</div> 
+                  <div class="date-d">20</div>
+                </div>
+                <div class="news-menu-box-content">
+                  <div class="news-menu-box-content-title">守護嬌嫩之肌!</div>
+                  <div class="news-menu-box-content-descibe">日本銷售量No.1，日本信賴之選!</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-12 my-5">
+          <ul class="nav nav-pills nav-fill product-cate-menu">
+            <li class="nav-item">
+              <a class="nav-link rounded-0" :class="{'active' : productCateCurrent == 'product-cate-1' }" href="javascript:;" @click.prevent="cateProductSearch(1)">連採中商品</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-0" :class="{'active' : productCateCurrent == 'product-cate-2' }" href="javascript:;" @click.prevent="cateProductSearch(2)">推薦商品</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-0" :class="{'active' : productCateCurrent == 'product-cate-3' }" href="javascript:;" @click.prevent="cateProductSearch(3)">品牌館</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-0" :class="{'active' : productCateCurrent == 'product-cate-4' }" href="javascript:;" @click.prevent="cateProductSearch(4)">秒殺商品</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-0" :class="{'active' : productCateCurrent == 'product-cate-5' }" href="javascript:;" @click.prevent="cateProductSearch(5)">熱銷商品</a>
+            </li>
+          </ul>
+          <div class="product-cate-box col-12 position-relative">
+            <loading 
+              :active.sync="productShowLoading"
+              color="rgba(36, 94, 96,1)"
+              :opacity= "loadingOpacity"
+              :is-full-page="fullNone"
+              loader="dots"
+            >
+            </loading>
+            <div class="row pb-4">
+              <div class="col-md-3 col-6" v-for="item in productList" :key="item.id">
+                <transition name="scale" mode="out-in" appear>
+                  <productItem class="product-cate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+                </transition>  
+              </div>
+              <!-- <div class="moreBtn">查看更多</div> -->
+            </div>
+          </div>
+      </div>
+
+      <!-- rwd 最新消息 -->
+      <div class="col-lg-3 my-5 d-block d-lg-none">
+        <ul class="nav nav-pills nav-fill product-cate-menu news-menu">
+          <li class="nav-item">
+            <a class="nav-link rounded-0 active text-left" href="javascript:;">
+              <span class="news-img"><img src="img/news_icon.png" class="img-fluid w-100" alt=""></span>
+              最新消息
+            </a>
+          </li>
+        </ul>
+        <div class="product-cate-box col-12 py-2">
+          <div class="news-menu-box d-flex justify-content-start align-items-start" v-for="item in 3">
+            <div class="news-menu-box-date">
+              <div class="date-y-m">2019/06</div> 
+              <div class="date-d">20</div>
+            </div>
+            <div class="news-menu-box-content">
+              <div class="news-menu-box-content-title">守護嬌嫩之肌!</div>
+              <div class="news-menu-box-content-descibe">日本銷售量No.1，日本信賴之選!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+
+    <div class="row py-5">
+      <div class="col-12 mb-3">
+        <h4 class="text-center zf-title">活動專區</h4>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <loading 
+            :active.sync="actShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+            style="margin:0 15px;"
+          >
+          </loading>
+          <div class="col-lg-5 pr-lg-0">
+            <transition name="fade" mode="out-in" appear>
+              <imgLazyLoading class="zfActBox" :imgUrl="actImg" v-if="actImg"/>
+            </transition>
+          </div>
+          <div class="col-lg-7 pl-lg-0">
+            <div class="product-act-box col-12 bg-white  d-flex align-items-center">
+              <div class="row py-4 py-lg-0">
+                <div class="col-md-3 col-6 px-2" v-for="item in actList" :key="item.id">
+                  <transition name="scale" mode="out-in" appear>
+                    <productItem class="product-act-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+                  </transition>  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row py-5">
+      <div class="col-12 mb-3">
+        <h4 class="text-center zf-title">熱門供應商</h4>
+      </div>
+      <div class="col-12">
+        <div class="d-flex flex-wrap flex-margin-box-adjust mb-4 position-relative loadingMinHeight">
+          <loading 
+            :active.sync="vendorShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <div class="vendor-box mb-3" v-for="item in hotVendor" :key="item.img">
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="vendorBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
+              </transition>
+          </div>
+        </div>  
+           
+        <!-- 廣告 -->
+        <div class="d-flex flex-wrap flex-margin-box-adjust position-relative loadingMinHeight">
+            <loading 
+            :active.sync="adShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <div class="ad-box mb-3" v-for="item in advertisement" :key="item.img">
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="adBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
+              </transition>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

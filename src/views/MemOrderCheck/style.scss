@@ -1,0 +1,44 @@
+@import '../../assets/scss/customer/utilty';
+.memOrderCheck{
+  .cart-menu{
+    background-color: #fff;
+    >.nav-item{
+      >a{
+        position: relative;
+        color: $fontColorGray;
+        width: 150px;
+        letter-spacing: 10px;
+        text-align:center;
+        &:before{
+          visibility: hidden;
+          position: absolute;
+          content: '';
+          display: inline-block;
+          width: 100%;
+          height: 5px;
+          top: -5px;
+          left: 0;
+          background-color: #089784;
+        }
+        &.active{
+          color:#fff;
+          background: linear-gradient(180deg, $cus-menuBar-up 0%, $cus-menuBar-down 100%);
+          &:before{
+            visibility: visible;
+          }
+        }
+
+        @media screen and (min-width: 768px) {
+          &:hover{
+            color:#fff;
+            // background: linear-gradient(180deg, $cus-menuBar-up 0%, $cus-menuBar-down 100%);
+            background-color: lighten($cus-menuBar-down,15%); 
+            &:before{
+              visibility: visible;
+            }
+          }
+        }
+      }
+    }
+  }
+}

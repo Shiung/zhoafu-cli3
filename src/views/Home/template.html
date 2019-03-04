@@ -1,0 +1,25 @@
+<div class="home" :class="{'rwdSwitchOn' : menuStatus}">
+  <navBar/>
+  <!-- Home -->
+  <!-- <div class="content">home</div> -->
+  <router-view></router-view> 
+
+  <!-- 功能 -->
+  <transition name="gotopOption" mode="out-in" appear>
+    <div class="mainOption d-flex flex-column align-items-center justify-content-center" v-if="optionSwitch">
+      <div class="line-cus-server">
+        <span>Line客服</span> 
+      </div>
+      <div class="FB-socail font-color-lightblue">
+        <span>FB粉絲頁</span> 
+      </div>
+      <div class="gotop d-flex flex-column align-items-center mx-0" @click="gotop">
+        <md-icon class="md-size-2x">keyboard_arrow_up</md-icon>
+        <span>TOP</span>  
+      </div>
+    </div>
+  </transition>
+  
+  
+  <footerBox/>
+</div>

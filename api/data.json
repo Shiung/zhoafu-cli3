@@ -1,0 +1,480 @@
+{
+  "product-cate-1": [
+    {
+      "id": "1",
+      "name": "西藥藥品"
+    },
+    {
+      "id": "2",
+      "name": "養生保健"
+    },
+    {
+      "id": "3",
+      "name": "醫療器材"
+    },
+    {
+      "id": "4",
+      "name": "民生用品"
+    },
+    {
+      "id": "5",
+      "name": "美容服膚"
+    }
+  ],
+  "banner": [
+    {
+      "url": "https://www.tgilive.com/image/frontend/banner/A7BN-03.jpg"
+    },
+    {
+      "url": "https://www.tgilive.com/image/frontend/banner/C6BN-02.jpg"
+    },
+    {
+      "url": "https://www.tgilive.com/image/frontend/banner/E2BN-05.jpg"
+    }
+  ],
+  "productContin": [
+    {
+      "id": "pc01",
+      "name": "三多L-麩醯胺酸鋅",
+      "oPrice": 110,
+      "price": 99,
+      "url": "/img/product-1.png"
+    },
+    {
+      "id": "pc02",
+      "name": "曼秀雷敦全家潤唇膏",
+      "oPrice": 110,
+      "price": 99,
+      "url": "/img/product-1.png"
+    },
+    {
+      "id": "pc03",
+      "name": "LRP深層淨膚泥面膜",
+      "oPrice": 1100,
+      "price": 999,
+      "url": "/img/product-1.png"
+    },
+    {
+      "id": "pc04",
+      "name": "萊萃美超級B群加C錠",
+      "oPrice": 3100,
+      "price": 2500,
+      "url": "/img/product-1.png"
+    }
+  ],
+  "productRec": [
+    {
+      "id": "pr01",
+      "name": "三多L-麩醯胺酸鋅R",
+      "oPrice": 110,
+      "price": 99,
+      "url": "/img/product-2.png"
+    },
+    {
+      "id": "pr02",
+      "name": "曼秀雷敦全家潤唇膏R",
+      "oPrice": 110,
+      "price": 99,
+      "url": "/img/product-2.png"
+    },
+    {
+      "id": "pr03",
+      "name": "LRP深層淨膚泥面膜R",
+      "oPrice": 1100,
+      "price": 999,
+      "url": "/img/product-2.png"
+    },
+    {
+      "id": "pr04",
+      "name": "萊萃美超級B群加C錠R",
+      "oPrice": 3100,
+      "price": 2500,
+      "url": "/img/product-2.png"
+    }
+  ],
+  "productAct": [
+    {
+      "actImg": "/img/act_test.png",
+      "data": [
+        {
+          "id": "act01",
+          "name": "三多L-麩醯胺酸鋅R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act02",
+          "name": "曼秀雷敦全家潤唇膏R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act03",
+          "name": "LRP深層淨膚泥面膜R",
+          "oPrice": 1100,
+          "price": 999,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act04",
+          "name": "萊萃美超級B群加C錠R",
+          "oPrice": 3100,
+          "price": 2500,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act05",
+          "name": "三多L-麩醯胺酸鋅R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act06",
+          "name": "曼秀雷敦全家潤唇膏R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act07",
+          "name": "LRP深層淨膚泥面膜R",
+          "oPrice": 1100,
+          "price": 999,
+          "url": "/img/product-1.png"
+        },
+        {
+          "id": "act08",
+          "name": "萊萃美超級B群加C錠R",
+          "oPrice": 3100,
+          "price": 2500,
+          "url": "/img/product-1.png"
+        }
+      ]
+    }
+  ],
+  "productAct2": [
+    {
+      "actImg": "/img/act_test1.png",
+      "data": [
+        {
+          "id": "act01",
+          "name": "三多L-麩醯胺酸鋅R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act02",
+          "name": "曼秀雷敦全家潤唇膏R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act03",
+          "name": "LRP深層淨膚泥面膜R",
+          "oPrice": 1100,
+          "price": 999,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act04",
+          "name": "萊萃美超級B群加C錠R",
+          "oPrice": 3100,
+          "price": 2500,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act05",
+          "name": "三多L-麩醯胺酸鋅R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act06",
+          "name": "曼秀雷敦全家潤唇膏R",
+          "oPrice": 110,
+          "price": 99,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act07",
+          "name": "LRP深層淨膚泥面膜R",
+          "oPrice": 1100,
+          "price": 999,
+          "url": "/img/product-2.png"
+        },
+        {
+          "id": "act08",
+          "name": "萊萃美超級B群加C錠R",
+          "oPrice": 3100,
+          "price": 2500,
+          "url": "/img/product-2.png"
+        }
+      ]
+    }
+  ],
+  "news": [
+    {
+      "id": "n01",
+      "title": "守護嬌嫩之肌!",
+      "content": "日本銷售量No.1，日本信賴之選!日本銷售量No.1，日本信賴之選!",
+      "date": "2019/06/20"
+    }
+  ],
+  "vendor": [
+    {
+      "img": "/img/vendor-1.png"
+    },
+    {
+      "img": "/img/vendor-2.png"
+    },
+    {
+      "img": "/img/vendor-3.png"
+    },
+    {
+      "img": "/img/vendor-4.png"
+    }
+  ],
+  "Advertisement": [
+    {
+      "img": "/img/ad-1.png"
+    },
+    {
+      "img": "/img/ad-2.png"
+    }
+  ],
+  "nav": [
+    {
+      "id": "nav01",
+      "name": "西藥產品",
+      "lv": 1,
+      "child": [
+        {
+          "id": "nav21",
+          "name": "遁還系統藥物",
+          "lv": 2,
+          "child": [
+            {
+              "id": "nav311",
+              "name": "代謝與電解質劑"
+            },
+            {
+              "id": "nav312",
+              "name": "強肝劑"
+            }
+          ]
+        },
+        {
+          "id": "nav22",
+          "name": "神經系統藥物",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav23",
+          "name": "呼吸系統藥物",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav24",
+          "name": "消化系統藥物",
+          "lv": 2,
+          "child": []
+        }
+      ]
+    },
+    {
+      "id": "nav02",
+      "name": "養生保健",
+      "lv": 1,
+      "child": [
+        {
+          "id": "nav25",
+          "name": "遁還系統藥物2",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav26",
+          "name": "神經系統藥物2",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav27",
+          "name": "呼吸系統藥物2",
+          "lv": 2,
+          "child": []
+        }
+      ]
+    },
+    {
+      "id": "nav03",
+      "name": "醫療器材",
+      "lv": 1,
+      "child": [
+        {
+          "id": "nav212",
+          "name": "遁還系統藥物3",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav222",
+          "name": "神經系統藥物3",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav232",
+          "name": "呼吸系統藥物3",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav242",
+          "name": "消化系統藥物3",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav252",
+          "name": "神經系統藥物3",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav262",
+          "name": "呼吸系統藥物3",
+          "lv": 2,
+          "child": []
+        },
+        {
+          "id": "nav272",
+          "name": "消化系統藥物3",
+          "lv": 2,
+          "child": []
+        }
+      ]
+    },
+    {
+      "id": "nav04",
+      "name": "民生用品",
+      "lv": 1,
+      "child": []
+    },
+    {
+      "id": "nav05",
+      "name": "美容服膚",
+      "lv": 1,
+      "child": []
+    }
+  ],
+  "nav_level3_nav21": [
+    {
+      "id": "nav311",
+      "name": "代謝與電解質劑"
+    },
+    {
+      "id": "nav312",
+      "name": "強肝劑"
+    },
+    {
+      "id": "nav313",
+      "name": "痛風治療劑"
+    },
+    {
+      "id": "nav314",
+      "name": "維他命劑"
+    },
+    {
+      "id": "nav315",
+      "name": "糖尿病治療劑"
+    },
+    {
+      "id": "nav316",
+      "name": "荷爾蒙劑"
+    },
+    {
+      "id": "nav317",
+      "name": "補血劑"
+    },
+    {
+      "id": "nav318",
+      "name": "體重控制"
+    }
+  ],
+  "nav_level3_nav22": [
+    {
+      "id": "nav311",
+      "name": "代謝與電解質劑"
+    },
+    {
+      "id": "nav312",
+      "name": "強肝劑"
+    },
+    {
+      "id": "nav313",
+      "name": "痛風治療劑"
+    }
+  ],
+  "nav-ad": [
+    {
+      "id": "navAD01",
+      "url": "/img/nav-ad-1.png"
+    },
+    {
+      "id": "navAD02",
+      "url": "/img/act_test.png"
+    }
+  ],
+  "productItem": {
+    "id": "test",
+    "title": "[諾鈣C] 維他命C+鈣 發泡錠 20錠(柳橙口味+檸檬口味)",
+    "imgs": [
+      {
+        "url": "/img/product-1.png"
+      },
+      {
+        "url": "/img/product-2.png"
+      },
+      {
+        "url": "/img/product-3.png"
+      },
+      {
+        "url": "/img/product-4.png"
+      },
+      {
+        "url": "/img/product-5.png"
+      }
+    ]
+  },
+  "cartList": [
+    {
+      "id": 1,
+      "idModel": "BA20190131006330",
+      "title": "【諾鈣C】維他命C+鈣 發泡錠 20錠(柳橙口味+檸檬口味)",
+      "oPrice": 950,
+      "price": 850,
+      "url": "/img/product-1.png",
+      "vendor": "兆福藥局",
+      "stock": 5
+    },
+    {
+      "id": 2,
+      "idModel": "BA20190131006331",
+      "title": "曼秀雷敦水份潤唇膏-無香料 3.5g",
+      "oPrice": 450,
+      "price": 150,
+      "url": "/img/product-2.png",
+      "vendor": "兆福藥局",
+      "stock": 2
+    }
+  ]
+}

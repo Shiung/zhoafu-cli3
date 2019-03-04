@@ -1,0 +1,11 @@
+<div class="productItem" @click="goPage">
+  <transition name="fade" mode="out-in" appear>
+    <imgLazyLoading class="productImg" :imgUrl="img"/>
+  </transition>
+  <div class="porduct-title text-center text-nowrap">{{productName}}</div>
+  <div class="porduct-price text-center text-nowrap">
+    <span class="o-price" v-if="originPrice">${{originPrice | currency}} / </span> 
+    <span class="n-price" v-if="price">${{price | currency}}元</span>
+  </div>
+  <div class="product-hover text-center">Read More</div>
+</div>
