@@ -50,10 +50,36 @@ ul.slick-dots{
   opacity: 1;
 }
 
+
+// hover 效果 僅 平板以上
 @media screen and (min-width: 768px) {
   .slick-arrow{
+    transition: .5s;
     &.slick-prev{
-      left: -100%;
+      left: -50px;
+    }
+    &.slick-next{
+      right: -50px;
     }
   }
+  ul.slick-dots{
+    bottom: -40px;
+    transition: .5s;
+  }
+  .bannerHover{
+    &:hover{
+      .slick-arrow{
+        &.slick-prev{
+          left: 0;
+        }
+        &.slick-next{
+          right: 0;
+        }
+      }
+      ul.slick-dots{
+        bottom: 0;
+      }
+    }
+  }      
+  
 }
