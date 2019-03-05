@@ -13,7 +13,9 @@ export default {
       vueCarouselAuto: false,
       vueAutoplayTimeout: 1000,
       vueCarouselPerPage: 4,
-      vueCarouselDotActiveColor: 'rgba(36, 94, 96,1)',
+      vueCarouselDotActiveColor: 'rgb(69, 199, 182)',
+      vueCarouselNextLabel: '<i class="material-icons">keyboard_arrow_right</i>',
+      vueCarouselPrevLabel: '<i class="material-icons">keyboard_arrow_left</i>',
       // loading
       loadingOpacity: 0.8,
       fullNone: false,

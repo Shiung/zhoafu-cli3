@@ -141,6 +141,8 @@
           :perPageCustom="[[300, 2], [576, 3], [768, 4]]"
           :navigationEnabled="true"
           :paginationActiveColor="vueCarouselDotActiveColor"
+          :navigationNextLabel="vueCarouselNextLabel"
+          :navigationPrevLabel="vueCarouselPrevLabel"
           >
             <slide v-for="item in relateProductList" :key="item.id">
               <transition name="scale" mode="out-in" appear>
