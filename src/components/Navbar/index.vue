@@ -16,6 +16,9 @@ export default {
       productCateListFirst: [],
       productCateListSecond: [],
       productCateListThird: [],
+      // search bar
+      searchStr: null,
+      inputOnfocus: false, // input focus 狀態
       // nav 廣告 list
       navAdList: [],
       // loading
@@ -143,6 +146,9 @@ export default {
       this.menu_status(false)
       // 轉址
       this.$router.push({ name: 'productCate', params: { id: idselected } })
+    },
+    logout () {
+      alert('登出')
     }
   },
   mounted () {

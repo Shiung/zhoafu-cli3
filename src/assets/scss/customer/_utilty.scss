@@ -14,8 +14,11 @@ $cus-lightblue: #97c4f5;
 $cus-red: #f06671 ;
 
 //主導覽列高度
-$navHeight : 106px;
-$navHeightRWD : 61px;
+$navTopHeight: 78px;
+$navMenuHeight: 44px;
+$navHeight : $navTopHeight + $navMenuHeight ;//106px;
+$navHeightRWD : 65px;
+$navHeightSearchRwd: 40px;
 
 // rwd bg
 $rwdBgColor: #e4dcdc;
@@ -23,6 +26,8 @@ $rwdBgColor: #e4dcdc;
 $rwdnavtopPadding: 40px;
 $rwdMainNavbarHeight: 50px;
 $rwdSearchbarHeight: 50px;
+$rwdAccountbarHeight: 25px;
+$rwdNavGuideMarginTop: 15px;
 $rwdLiheight: 45px;
 
 // 文字顏色

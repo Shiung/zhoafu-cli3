@@ -15,10 +15,28 @@ $menuBar3Width : 550px;
   background-color: #fff;
   left: 0;
   transition: .3s;
-  .logo{
-    width: 250px;
+  height: $navTopHeight;
+  .nav-logo{
+    .ch-title{
+      font-size: 19px;
+      color:#666;
+    }
+    .en-title{
+      font-size: 12px;
+      color:#666;
+      transform: scale(0.8);
+      transform-origin: 0 0;
+    }
   }
   .navbar-nav{
+    &.main-menu{
+      >.nav-item{
+        width: 45px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
     >.nav-item{
       >a{
         color:#666;
@@ -26,7 +44,7 @@ $menuBar3Width : 550px;
       }
 
       >.line{
-        width: 40px;
+        width: 45px;
         height: 5px;
         background-color: $cus-green;
         position: fixed;
@@ -55,11 +73,13 @@ $menuBar3Width : 550px;
   }
   .menu-option{
     width: 100%;
+    height: $navMenuHeight;
     position: absolute;
     bottom: 0;
     left: 50%;
     background-color: $cus-menuBar-bg;
     transform: translate(-50%,100%);
+    box-shadow: 0 0.125rem 0.25rem rgba(black, .2) ;
     .navbar-nav{
       .nav-item{
         >a{
@@ -166,39 +186,6 @@ $menuBar3Width : 550px;
       // }
     }
 
-    .search-box{
-      position: relative;
-      background-color: #fff;
-      border-radius: 15px;
-      padding: 2px 2px 2px 2px;
-      // box-shadow: 0px 0px 1px #eee;
-      input.search-txt{
-        width: 185px;
-        border: none;
-        background: none;
-        outline: none;
-        padding:0 10px; 
-        line-height: 20px;
-        &::placeholder{
-          font-size: 12px;
-          color:$cus-FontColor-gray;
-        }
-      }
-      .search-btn{
-        cursor: pointer;
-        padding: 0;
-        border: none;
-        color: $cus-FontColor-gray;
-        background-color: transparent;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        transition: .3s;
-        &:hover{
-          color:$cus-green;
-        }
-      }
-    }
   }
   .showMenuBox{
     position: absolute;
@@ -311,6 +298,59 @@ $menuBar3Width : 550px;
     }
   }
 
+  .account{
+    border-radius: 20px;
+    color:#888;
+    >.line{
+      width: 1px;
+      height: 10px;
+      background-color: #dee2e6;
+    }
+    >.login{
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .search-box{
+    position: relative;
+    background-color: #f7f7f7;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    padding: 2px 2px 2px 2px;
+    // box-shadow: 0px 0px 1px #eee;
+
+    // 搜尋bar
+    &.search-box-focus{
+      border-color:$cus-green;
+    }
+    input.search-txt{
+      width: 280px;
+      border: none;
+      background: none;
+      outline: none;
+      padding:0 10px; 
+      line-height: 20px;
+      &::placeholder{
+        font-size: 12px;
+        color:$cus-FontColor-gray;
+      }
+    }
+    .search-btn{
+      cursor: pointer;
+      padding: 0;
+      border: none;
+      color: $cus-FontColor-gray;
+      background-color: transparent;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      transition: .3s;
+      &:hover{
+        color:$cus-green;
+      }
+    }
+  }
 
   @media screen and (max-width: 991px) {
     .rwd-full{
@@ -404,9 +444,9 @@ $menuBar3Width : 550px;
           >ul{
             position: absolute;
             left: 0;
-            top:$rwdLiheight;
+            top:$rwdLiheight + $rwdNavGuideMarginTop;
             box-shadow: -0.125rem 0  0.25rem rgba(0, 0, 0, 0.075) !important;
-            height: calc( 100vh - #{$rwdnavtopPadding} - #{$rwdMainNavbarHeight} - #{$rwdSearchbarHeight} - #{$rwdLiheight});
+            height: calc( 100vh - #{$rwdnavtopPadding} - #{$rwdMainNavbarHeight} - #{$rwdAccountbarHeight} - #{$rwdNavGuideMarginTop} - #{$rwdLiheight});
             transition: .5s;
             overflow-y: auto;
             li{
@@ -487,6 +527,7 @@ $menuBar3Width : 550px;
           }
           >.rwd-nav-guide{
             height: $rwdLiheight;
+            margin-top: $rwdNavGuideMarginTop; 
             >.rwd-return{
               cursor: pointer;
               position: absolute;
@@ -513,6 +554,29 @@ $menuBar3Width : 550px;
     &.rwdSwitchOn{
       left: 50%;
     }
+
+    .search{
+      position: absolute;
+      width: 100%;
+      height: $navHeightSearchRwd;
+      background-color: #dee2e6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      bottom:0;
+      transform: translateY(100%);
+      box-shadow: 0 0.125rem 0.25rem rgba(black, .2) ;
+    }
+
+    .account{
+      width: 185px;
+      height: $rwdAccountbarHeight;
+      border-color: #888 !important;
+      margin: auto;
+      >.line{
+        background-color: #888;
+      }
+    }
   }
 
   @media screen and (max-width: 575px) {
@@ -526,6 +590,12 @@ $menuBar3Width : 550px;
   }
 }
 
+// rwd 
+@media screen and (max-width: 767px) {
+  nav.navbar{
+    height: $navHeightRWD;
+  }
+}
 
 // scroll bar style
 ::-webkit-scrollbar {
