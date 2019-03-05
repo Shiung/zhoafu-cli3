@@ -6,13 +6,30 @@
 }
 .VueCarousel-navigation-prev{
   transform: translate(0, -50%) !important;
+  margin-left: -15px;
 }
 .VueCarousel-navigation-next{
   transform: translate(0, -50%) !important;
+  margin-right: -15px;
 }
 .VueCarousel-navigation-button{
-  color:$customer !important;
+  color:$cus-green !important;
 }
 .VueCarousel-navigation--disabled{
   visibility: hidden;
 } 
+
+.VueCarousel-navigation-button{
+  padding: 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  >i{
+    font-size: 40px;
+  }
+}
+.VueCarousel-pagination{
+  .VueCarousel-dot-container{
+    margin-top: 0 !important;
+  }
+}
