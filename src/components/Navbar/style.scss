@@ -2,7 +2,7 @@
 
 $menuBar1Width : 124px;
 $menuBar2Width : 160px;
-$menuBar3Width : 550px;
+$menuBar3Width : 400px;
 
 // ul 去除list style
 %extendliststyleOFF{
@@ -289,7 +289,7 @@ $menuBar3Width : 550px;
       padding-top:50%;
     }
     .navShow-shadow{
-      // background-color: #ccc;
+      background-color: rgba(black,.2);
       width: 100%;
       position: absolute;
       height: 100vh;
