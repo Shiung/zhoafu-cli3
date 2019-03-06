@@ -33,6 +33,7 @@
 @import "~vue-material/dist/components/MdList/theme";
 @import "~vue-material/dist/components/MdDialog/theme";
 @import "~vue-material/dist/components/MdSwitch/theme";
+@import "~vue-material/dist/components/MdSpeedDial/theme";
 
 // vue datetime ------------------
 @import '~vue-datetime/dist/vue-datetime.css';
@@ -120,9 +121,19 @@ input.cusInput:focus{
 .bg-color-gray{
   background-color: lighten($cus-FontColor-gray , 18%);
 }
-
+.bg-color-cus-green{
+  background-color: $cus-green !important;
+}
+.bg-color-darkblue{
+  background-color:$cus-menuBar-second !important;
+}
 .bg-transparent{
   background-color: transparent;
+}
+
+// fb color 
+.fb-font-color{
+  color:#3b5998 !important;
 }
 
 a:not(.md-button){

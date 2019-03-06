@@ -30,9 +30,26 @@
       }
     }
   }
+
+  .cus-option{
+    position: fixed;
+    z-index: 1;
+    min-width: 20px;
+    min-height: 20px;
+    right: 15px;
+    bottom: 50px;
+    .md-cus{
+      right: 0;
+      bottom: 0;
+    }
+  }
   @media screen and (max-width: 767px){
     &.rwdSwitchOn{
       left: 50%;
+    }
+    .cus-option{
+      right: 5px;
+      bottom: 15px;
     }
   }
   @media screen and (max-width: 575px) {

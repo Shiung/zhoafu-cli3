@@ -19,7 +19,7 @@ import VueSwal from 'vue-swal'
 // vue select
 import vSelect from 'vue-select'
 // vue-material
-import { MdField, MdRipple, MdButton, MdRadio, MdMenu, MdList, MdDialog, MdSwitch } from 'vue-material/dist/components'
+import { MdField, MdRipple, MdButton, MdRadio, MdMenu, MdList, MdDialog, MdSwitch, MdSpeedDial } from 'vue-material/dist/components'
 // vue-dattime
 import Datetime from 'vue-datetime'
 // filters
@@ -48,6 +48,7 @@ Vue.use(MdMenu)
 Vue.use(MdList)
 Vue.use(MdDialog)
 Vue.use(MdSwitch)
+Vue.use(MdSpeedDial)
 
 // vue datetime
 Vue.use(Datetime)
