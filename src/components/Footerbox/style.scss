@@ -95,9 +95,17 @@
 
     .social-box{
       .line-social,.FB-social{
-        width: 50px;
-        height: 50px;
-        background-color: #fff;
+        // width: 50px;
+        // height: 50px;
+        // background-color: #fff;
+        cursor: pointer;
+        transition: .3s;
+      }
+      .line-social:hover{
+        color:#28a745;
+      }
+      .FB-social:hover{
+        color: #3b5998;
       }
     }
   }
