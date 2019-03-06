@@ -72,10 +72,110 @@ $expiry-bg: #e2eefd;
 
     .joint-procurement-area{
       padding: 20px 0;
+
+      // 進度條
       .progress-area{
         background-color: $progress-bg;
-        height: 100px;
+        height: 130px;
+        padding-bottom: 45px;
+        .progress-box{
+          width: 80%;
+          .progress-zone{
+            position: relative;
+            height: 10px;
+            // background-color: $cus-FontColor-gray;
+            background-color:$cus-menuBar-second;
+            &:first-child{
+              border-radius: 20px 0 0 20px;
+            }
+            &:last-child{
+              border-radius: 0 20px 20px 0;
+              // 調整最後一個階段顯示的內容
+              .step-show{
+                right: calc( 0% - 20px );
+                transform: translateX(0%);
+                &:after{
+                  left: calc( 100% - 20px);
+                }
+              }
+            }
+            .breakpoint{
+              width: 15px;
+              height: 35px;
+              background-color: #fff;
+              position: absolute;
+              right: 0;
+              top: 50%;
+              transform: translate(50%, -50%);
+              z-index: 1;
+              border-radius: 10px;
+              border: 3px solid;
+              // border-color:$cus-FontColor-gray;
+              border-color:$cus-menuBar-second;
+            }
+            .step-price{
+              position: absolute;
+              right: 0;
+              bottom: -30px;
+              transform: translateX(50%);
+              color: $fontColorGray;
+            }
+            .step-stock{
+              position: absolute;
+              right: 0;
+              top: -30px;
+              transform: translateX(50%);
+              color: $fontColorGray;
+            }
+            .step-show{
+              visibility: hidden;
+              background-color: $cus-menuBar-second;
+              position: absolute;
+              top: -55px;
+              padding: 2px 15px;
+              border-radius: 20px;
+              right: 0;
+              transform: translateX(50%);
+              color: $cus-yellow;
+              &:after{
+                content:'';
+                display: block;
+                width: 15px;
+                height: 10px;
+                background-color: $cus-menuBar-second;
+                position: absolute;
+                bottom:0;
+                left: 50%;
+                transform: translate(-50%,100%);
+                border-radius: 0 0 20px 20px; 
+              }
+            }
+            
+            &.active{
+              // background-color:$cus-menuBar-second;
+              // .breakpoint{
+              //   border-color:$cus-menuBar-second;
+              // }
+              .step-stock{
+                display: none;
+              }
+              .step-show{
+                visibility: visible;
+              }
+
+              // active 後的所有弟弟
+              &~.progress-zone{
+                background-color: $cus-FontColor-gray;
+                .breakpoint{
+                  border-color:$cus-FontColor-gray;
+                }
+              }
+            }
+          }
+        }
       }
+      // 進度條 end
+
       .joint-procurement-expiry{
         font-size: 14px;
         color: $fontColorGray;
