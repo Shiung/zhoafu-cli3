@@ -13,6 +13,12 @@ export default {
       // 商品分類專區 類別
       productCateCurrent: 'product-cate-1',
       productList: [],
+      // vue-carousel
+      vueCarouselAuto: false,
+      vueAutoplayTimeout: 1000,
+      vueCarouselDotActiveColor: 'rgb(69, 199, 182)', // 客戶綠
+      vueCarouselNextLabel: '<i class="material-icons">keyboard_arrow_right</i>',
+      vueCarouselPrevLabel: '<i class="material-icons">keyboard_arrow_left</i>',
       // 最新消息
       newslist: [],
       // 活動專區

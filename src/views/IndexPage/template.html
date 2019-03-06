@@ -1,5 +1,5 @@
 <div class="indexPage">
-  <div class="w-100 banner-bg mb-5">
+  <div class="w-100 banner-bg mb-3">
       <!-- <bannerItme :autoplayStatus="true"/> -->
 
       <div class="container rwd-full rwd-p-0">
@@ -38,7 +38,8 @@
   
   <div class="container">
     <div class="row">
-      <div class="col-12 my-5">
+      <!-- old 頁籤方式 -->
+      <!-- <div class="col-12 my-5">
           <ul class="nav nav-pills nav-fill product-cate-menu">
             <li class="nav-item">
               <a class="nav-link rounded-0" :class="{'active' : productCateCurrent == 'product-cate-1' }" href="javascript:;" @click.prevent="cateProductSearch(1)">連採中商品</a>
@@ -71,17 +72,215 @@
                   <productItem class="product-cate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
                 </transition>  
               </div>
-              <!-- <div class="moreBtn">查看更多</div> -->
             </div>
           </div>
+      </div> -->
+      <!-- old 頁籤方式  end-->
+
+      <!-- 連採中 -->
+      <div class="col-12 my-3">
+        <div class="cate-title title-cus-green bg-white d-flex justify-content-center align-items-center">
+          <h5 class="m-0">連採中商品</h5>
+        </div>
+        <div class="product-cate-box py-3 col-12 position-relative">
+          <loading 
+            :active.sync="productShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <carousel 
+          :autoplay="vueCarouselAuto" 
+          :loop="false"
+          :perPageCustom="[[300, 2], [576, 3], [768, 4], [992, 5]]"
+          :navigationEnabled="true"
+          :paginationActiveColor="vueCarouselDotActiveColor"
+          :navigationNextLabel="vueCarouselNextLabel"
+          :navigationPrevLabel="vueCarouselPrevLabel"
+          >
+            <slide v-for="item in productList" :key="item.id">
+              <transition name="scale" mode="out-in" appear>
+                <productItem class="product-relate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+              </transition>
+            </slide>
+          </carousel>
+        </div>  
+      </div>
+      <!-- 連採中 end-->
+
+      <div class="col-12 my-3">
+        <img src="/img/adimgtest.png" alt="">
       </div>
 
+      <!-- 推薦商品 -->
+      <div class="col-12 my-3">
+        <div class="cate-title title-cus-orange bg-white d-flex justify-content-center align-items-center">
+          <h5 class="m-0">推薦商品</h5>
+        </div>
+
+        <div class="product-cate-box py-3 col-12 position-relative">
+          <loading 
+            :active.sync="productShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <div class="row d-flex align-items-center">
+            <div class="col-md-5 col-12">
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="zfActBox" :imgUrl="actImg" v-if="actImg"/>
+              </transition>
+            </div>
+            <div class="col-md-7 col-12">
+              <carousel 
+              :autoplay="vueCarouselAuto" 
+              :loop="false"
+              :perPageCustom="[[300, 2],[576, 3] , [768, 2] , [992, 3]]"
+              :navigationEnabled="true"
+              :paginationActiveColor="vueCarouselDotActiveColor"
+              :navigationNextLabel="vueCarouselNextLabel"
+              :navigationPrevLabel="vueCarouselPrevLabel"
+              >
+                <slide v-for="item in productList" :key="item.id">
+                  <transition name="scale" mode="out-in" appear>
+                    <productItem class="product-relate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+                  </transition>
+                </slide>
+              </carousel>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <!-- 推薦商品 end-->
+
+      <!-- 供應商 及 廣告 -->
+      <div class="col-12 mt-3">
+        <h4 class="text-center zf-title">熱門供應商</h4>
+      </div>
+      <div class="col-12 mb-3">
+        <div class="d-flex flex-wrap flex-margin-box-adjust position-relative loadingMinHeight">
+          <loading 
+            :active.sync="vendorShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <div class="vendor-box mb-3" v-for="item in hotVendor" :key="item.img">
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="vendorBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
+              </transition>
+          </div>
+        </div>  
+            
+        <!-- 廣告 -->
+        <div class="d-flex flex-wrap flex-margin-box-adjust position-relative loadingMinHeight">
+            <loading 
+            :active.sync="adShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <div class="ad-box mb-3" v-for="item in advertisement" :key="item.img">
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="adBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
+              </transition>
+          </div>
+        </div>
+
+      </div>
+      <!-- 供應商 及 廣告 end-->
+
+      <!-- 秒殺商品 -->
+      <div class="col-12 my-3">
+        <div class="cate-title title-cus-orange bg-white d-flex justify-content-center align-items-center">
+          <h5 class="m-0">秒殺商品</h5>
+        </div>
+
+        <div class="product-cate-box py-3 col-12 position-relative">
+          <loading 
+            :active.sync="productShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <div class="row d-flex align-items-center flex-md-row flex-column-reverse">
+            <div class="col-md-7 col-12">
+              <carousel 
+              :autoplay="vueCarouselAuto" 
+              :loop="false"
+              :perPageCustom="[[300, 2],[576, 3] , [768, 2] , [992, 3]]"
+              :navigationEnabled="true"
+              :paginationActiveColor="vueCarouselDotActiveColor"
+              :navigationNextLabel="vueCarouselNextLabel"
+              :navigationPrevLabel="vueCarouselPrevLabel"
+              >
+                <slide v-for="item in productList" :key="item.id">
+                  <transition name="scale" mode="out-in" appear>
+                    <productItem class="product-relate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+                  </transition>
+                </slide>
+              </carousel>
+            </div>
+            <div class="col-md-5 col-12">
+              <transition name="fade" mode="out-in" appear>
+                <imgLazyLoading class="zfActBox" :imgUrl="actImg" v-if="actImg"/>
+              </transition>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <!-- 秒殺商品  end-->
+
+      <!-- 熱銷商品 -->
+      <div class="col-12 my-3">
+        <div class="cate-title title-cus-green bg-white d-flex justify-content-center align-items-center">
+          <h5 class="m-0">熱銷商品</h5>
+        </div>
+
+        <div class="product-cate-box py-3 col-12 position-relative">
+          <loading 
+            :active.sync="productShowLoading"
+            color="rgba(36, 94, 96,1)"
+            :opacity= "loadingOpacity"
+            :is-full-page="fullNone"
+            loader="dots"
+          >
+          </loading>
+          <carousel 
+          :autoplay="vueCarouselAuto" 
+          :loop="false"
+          :perPageCustom="[[300, 2],[576, 3] , [768, 4] , [992, 5]]"
+          :navigationEnabled="true"
+          :paginationActiveColor="vueCarouselDotActiveColor"
+          :navigationNextLabel="vueCarouselNextLabel"
+          :navigationPrevLabel="vueCarouselPrevLabel"
+          >
+            <slide v-for="item in productList" :key="item.id">
+              <transition name="scale" mode="out-in" appear>
+                <productItem class="product-relate-box-productList" :productID="item.id" :productName="item.name" :originPrice="item.oPrice" :price="item.price" :img="item.url"/>
+              </transition>
+            </slide>
+          </carousel>
+        </div>  
+      </div>
+      <!-- 熱銷商品 end -->
+
       <!-- rwd 最新消息 -->
-      <div class="col-lg-3 my-5 d-block d-lg-none">
+      <div class="col-lg-3 my-3 d-block d-lg-none">
         <ul class="nav nav-pills nav-fill product-cate-menu news-menu">
           <li class="nav-item">
             <a class="nav-link rounded-0 active text-left" href="javascript:;">
-              <span class="news-img"><img src="img/news_icon.png" class="img-fluid w-100" alt=""></span>
+              <span class="news-img"><img src="/img/news_icon.png" class="img-fluid w-100" alt=""></span>
               最新消息
             </a>
           </li>
@@ -102,8 +301,8 @@
     </div>
      
 
-    <div class="row py-5">
-      <div class="col-12 mb-3">
+    <div class="row my-3">
+      <div class="col-12">
         <h4 class="text-center zf-title">活動專區</h4>
       </div>
       <div class="col-12">
@@ -137,47 +336,6 @@
 
       </div>
 
-    </div>
-
-    <div class="row py-5">
-      <div class="col-12 mb-3">
-        <h4 class="text-center zf-title">熱門供應商</h4>
-      </div>
-      <div class="col-12">
-        <div class="d-flex flex-wrap flex-margin-box-adjust mb-4 position-relative loadingMinHeight">
-          <loading 
-            :active.sync="vendorShowLoading"
-            color="rgba(36, 94, 96,1)"
-            :opacity= "loadingOpacity"
-            :is-full-page="fullNone"
-            loader="dots"
-          >
-          </loading>
-          <div class="vendor-box mb-3" v-for="item in hotVendor" :key="item.img">
-              <transition name="fade" mode="out-in" appear>
-                <imgLazyLoading class="vendorBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
-              </transition>
-          </div>
-        </div>  
-           
-        <!-- 廣告 -->
-        <div class="d-flex flex-wrap flex-margin-box-adjust position-relative loadingMinHeight">
-            <loading 
-            :active.sync="adShowLoading"
-            color="rgba(36, 94, 96,1)"
-            :opacity= "loadingOpacity"
-            :is-full-page="fullNone"
-            loader="dots"
-          >
-          </loading>
-          <div class="ad-box mb-3" v-for="item in advertisement" :key="item.img">
-              <transition name="fade" mode="out-in" appear>
-                <imgLazyLoading class="adBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
-              </transition>
-          </div>
-        </div>
-
-      </div>
     </div>
 
   </div>
