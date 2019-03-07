@@ -30,6 +30,8 @@ import initTop from './assets/js/initTop.js' // 初始置頂
 Vue.config.productionTip = false
 
 Vue.use(VueAxios, axios)
+axios.defaults.headers.common['Accept'] = 'application/json'
+
 // vue image loading
 Vue.use(VueLazyload, {
   lazyComponent: true,
