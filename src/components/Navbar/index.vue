@@ -142,8 +142,6 @@ export default {
     goCatePage (idselected) {
       // 關閉導覽列選單 桌機
       this.showMenuBoxSwitch = false
-      // 關閉導覽列選單 手機
-      this.menu_status(false)
       // 轉址
       this.$router.push({ name: 'productCate', params: { id: idselected } })
     },

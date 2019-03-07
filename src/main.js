@@ -73,4 +73,6 @@ router.beforeEach((to, from, next) => {
   next()
   // 置頂function
   initTop()
+  // 跳頁關閉rwd 開關
+  store.dispatch('menu_status', false)
 })
