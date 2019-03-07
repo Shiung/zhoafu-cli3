@@ -31,16 +31,24 @@
     .mem-cate-box{
       flex:1;
       .mem-cate{
-        background-color: $cus-menuBar-bg;
-        padding: 0 10px;
+        // background-color: $cus-menuBar-bg;
+        background-color: #fff;
+        border-bottom: 5px solid $cus-menuBar-bg;
+        // padding: 0 10px;
         >nav.nav{
-          padding: 10px 0;
+          // padding: 10px 0;
+          padding: 0;
           a.nav-link{
-            border-radius: 20px; 
-            &:not(:first-child){
-              margin-left:10px;
+            // border-radius: 20px; 
+            color: #888;
+            // &:not(:first-child){
+            //   margin-left:10px;
+            // }
+            // background-color: $cus-green;
+            &.router-link-exact-active{
+              color: #fff;
+              background-color: $cus-menuBar-bg;
             }
-            background-color: $cus-green;
           }
         }
       }
