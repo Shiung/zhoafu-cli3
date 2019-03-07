@@ -20,6 +20,7 @@ $menuBar3Width : 400px;
     .ch-title{
       font-size: 19px;
       color:#666;
+      font-weight: 500;
     }
     .en-title{
       font-size: 12px;
@@ -51,7 +52,9 @@ $menuBar3Width : 400px;
         top: -5px;
         transition: .3s;
       }
-
+      >a.router-link-active{
+        color: $cus-green;
+      }  
       @media screen and (min-width: 768px) {
         &:hover{
           a{
@@ -79,7 +82,7 @@ $menuBar3Width : 400px;
     left: 50%;
     background-color: $cus-menuBar-bg;
     transform: translate(-50%,100%);
-    box-shadow: 0 0.125rem 0.25rem rgba(black, .2) ;
+    box-shadow: 0 0.125rem 0.25rem -0.125rem rgba(black, .2) ;
     .navbar-nav{
       .nav-item{
         >a{
@@ -199,6 +202,7 @@ $menuBar3Width : 400px;
       bottom: 0;
       color:#fff;
       font-size: 12px;
+      z-index: 2;
       >li{
         cursor: pointer;
         transition: .3s;
@@ -294,7 +298,7 @@ $menuBar3Width : 400px;
       position: absolute;
       height: 100vh;
       top: 0;
-      z-index: -1;
+      z-index: 1;
     }
   }
 
