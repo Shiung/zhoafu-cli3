@@ -6,12 +6,11 @@
     >.nav-item{
       >a{
         position: relative;
-        color: $fontColorGray;
+        color: #fff;
         width: 150px;
         letter-spacing: 10px;
         text-align:center;
         &:before{
-          visibility: hidden;
           position: absolute;
           content: '';
           display: inline-block;
@@ -19,23 +18,47 @@
           height: 5px;
           top: -5px;
           left: 0;
-          background-color: #089784;
+          transition: .2s;
+          z-index: 1;
+        }
+        &:after{
+          position: absolute;
+          content: '';
+          display: inline-block;
+          width: 100%;
+          height: 5px;
+          top: -5px;
+          left: 0;
+          transition: .2s;
+        }
+        &.direct-nav-btn{
+          background-color: $cus-green;
+          &:before{
+            background-color: darken($cus-green, 20%);
+          }
+          &:after{
+            background-color: $cus-green;
+          }
+        }
+        &.joint-nav-btn{
+          background-color: $cus-menuBar-second;
+          &:before{
+            background-color: darken($cus-menuBar-second, 20%);
+          }
+          &:after{
+            background-color: $cus-menuBar-second;
+          }
         }
         &.active{
-          color:#fff;
-          background: linear-gradient(180deg, $cus-menuBar-up 0%, $cus-menuBar-down 100%);
           &:before{
-            visibility: visible;
+            top:-10px;
           }
         }
 
         @media screen and (min-width: 768px) {
           &:hover{
-            color:#fff;
-            // background: linear-gradient(180deg, $cus-menuBar-up 0%, $cus-menuBar-down 100%);
-            background-color: lighten($cus-menuBar-down,15%); 
             &:before{
-              visibility: visible;
+              top:-10px;
             }
           }
         }
@@ -73,4 +96,31 @@
     }
   }
   
+  // fix 手機版區塊
+  @media screen and (max-width:575px) {
+    // 主頁籤
+    .cart-menu{
+      padding-right: 0;
+      >.nav-item{
+        flex:1;
+        >a{
+          width: 100%;
+        }
+      }
+    }
+        
+    // border
+    .border-fix{
+      border-bottom: 10px solid #eff9f9 !important;
+    }
+  }
+}
+
+// 移除 input number 上下按鈕
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"]{
+  -moz-appearance: textfield;
 }

@@ -5,6 +5,7 @@ export default {
     return {
       cartList: [],
       invoice: '',
+      pointUse: false,
       // vue select
       paySelected: null,
       payOptions: [
@@ -15,6 +16,15 @@ export default {
       donateOptions: [
         { id: 1, label: '單位一' },
         { id: 2, label: '單位二' }
+      ],
+      addreeSelected: null,
+      addreeOptions: [
+        // { id: 1, user: 'peter 0933929102', store: '丁丁藥局(台北)', address: '台北市衡陽路135號7樓' },
+        // { id: 2, user: 'peter 0933929102', store: '丁丁藥局(台中)', address: '台中市台灣大道二段' },
+        // { id: 2, user: 'peter 0933929102', store: '丁丁藥局(高雄)', address: '高雄市小港區' }
+        { id: 1, label: 'peter 0933929102 , 丁丁藥局(台北) , 台北市衡陽路135號7樓' },
+        { id: 2, label: 'peter 0933929102 , 丁丁藥局(台中) , 台中市台灣大道二段' },
+        { id: 2, label: 'peter 0933929102 , 丁丁藥局(高雄) , 高雄市小港區' }
       ]
     }
   },

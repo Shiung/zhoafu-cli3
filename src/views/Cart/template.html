@@ -15,37 +15,100 @@
       <div class="row">
         <ul class="nav nav-pills justify-content-center cart-menu border-bottom border-color-gary col-12" role="tablist">
           <li class="nav-item">
-            <a class="nav-link rounded-0 active" data-toggle="pill" href="#cart-direct" role="tab" aria-controls="cart-direct" aria-selected="true">直購</a>
+            <a class="nav-link direct-nav-btn rounded-0 active" data-toggle="pill" href="#cart-direct" role="tab" aria-controls="cart-direct" aria-selected="true">直購</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link rounded-0" data-toggle="pill" href="#cart-joint" role="tab" aria-controls="cart-joint" aria-selected="false">連採</a>
+            <a class="nav-link joint-nav-btn rounded-0" data-toggle="pill" href="#cart-joint" role="tab" aria-controls="cart-joint" aria-selected="false">連採</a>
           </li>
         </ul> 
 
         <div class="col-12 tab-content mb-3">
           <div class="tab-pane fade show active" id="cart-direct" role="tabpanel" aria-labelledby="cart-direct">
-            <cartListBox 
-              v-for="item in cartList" 
-              :key="item.id"
-              :productID="item.id"
-              :productCusID="item.idModel"
-              :productName="item.title"
-              :originPrice="item.oPrice"
-              :price="item.price"
-              :stock="item.stock"
-              :img="item.url"
-            />
+            <div v-for="item in 2" :key="item">
+              <div class="row">
+                <div class="col-12 cart-cate font-14 font-color-gray bg-color-gray">訂單類別{{item}}</div>
+              </div>
+              
+              <cartListBox 
+                v-for="item in cartList" 
+                :key="item.id"
+                :productID="item.id"
+                :productCusID="item.idModel"
+                :productName="item.title"
+                :originPrice="item.oPrice"
+                :price="item.price"
+                :stock="item.stock"
+                :img="item.url"
+              />
 
-            <div class="row border-bottom border-color-gary">
-              <div class="col-12 d-flex justify-content-end section">
-                <div class="">
-                  <div class="section-total">共 2 項商品，數量 2 個，總金額 2000元</div>
-                  <div class="section-cargo text-right mt-2">運費: <span class="font-color-darkblue">滿500元免運費</span></div>
-                </div>
-              </div>     
+              <div class="row border-bottom border-color-gary border-fix">
+                <div class="col-12 d-flex justify-content-end section">
+                  <div class="">
+                    <div class="section-total">共 2 項商品，數量 2 個，總金額 2000元</div>
+                    <div class="section-cargo text-right mt-2">運費: <span class="font-color-darkblue">滿500元免運費</span></div>
+                  </div>
+                </div>     
+              </div>
+            </div>
+            
+
+            <!-- 點數折抵 -->
+            <div class="row border-bottom border-color-gary border-fix">
+              <div class="col-12 d-flex justify-content-end align-items-center section font-14">
+                <span class="font-color-darkblue">點數折抵</span>
+                <md-switch v-model="pointUse" class="md-primary my-0 mr-0 ml-3"></md-switch>
+                <transition name="fade" mode="out-in" appear>
+                  <div v-if="pointUse" class="d-flex justify-content-end align-items-center">
+                    <input type="number" class="cusInput mx-2 text-right">
+                    <span>點</span>
+                  </div>
+                </transition>
+              </div>
             </div>
 
-            <div class="row border-bottom border-color-gary">
+            <!-- 總金額計算 -->
+            <div class="row border-bottom border-color-gary section border-fix">
+              <div class="col-12 d-flex justify-content-end align-items-center font-14">
+                <table class="text-right">
+                  <tbody>
+                    <tr>
+                      <td style="width:90px;">消費總金額:</td>
+                      <td style="width:90px;">NT 4,000</td>
+                    </tr>
+                    <tr class="text-danger">
+                      <td>折抵:</td>
+                      <td>-NT 299</td>
+                    </tr>
+                    <tr>
+                      <td>應付金額:</td>
+                      <td>NT 3,701</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- 送貨地址 -->
+            <div class="row border-bottom border-color-gary border-fix">
+              <div class="col-12 d-flex align-items-start align-items-sm-center flex-column flex-sm-row section">
+                <div class="title font-14 mb-3 mb-sm-0 text-nowrap">送貨地址:</div>
+                <div class="w-100 ml-3 pr-3 pr-sm-0">
+                  <v-select 
+                    class="cus-vueselect w-100 " placeholder="選擇寄送地址" 
+                    v-model="addreeSelected"
+                    :options="addreeOptions">
+                    <span slot="no-options" class="font-12">沒有資料</span>
+                    <template slot="option" slot-scope="option">
+                      {{option.label}}
+                    </template>
+                  </v-select>
+                </div>
+                
+              </div>
+            </div>
+
+            <!-- 付款方式   -->
+            <div class="row border-bottom border-color-gary border-fix">
               <div class="col-12 d-flex justify-content-start justify-content-xl-between align-items-start align-items-xl-center flex-column flex-lg-row">
                 <div class="d-flex align-items-start align-items-sm-center flex-column flex-sm-row section">
                   <div class="title font-14 mb-3 mb-sm-0">付款方式: </div>
@@ -53,11 +116,11 @@
                     class="ml-3 cus-vueselect cus-vueselect-180" placeholder="選擇付款方式" 
                     v-model="paySelected" 
                     :options="payOptions">
-                    <span slot="no-options">沒有資料</span>
+                    <span slot="no-options" class="font-12">沒有資料</span>
                   </v-select>
                 </div>
 
-                <div class="rwdline d-block d-lg-none bg-color-gray"></div>
+                <!-- <div class="rwdline d-block d-lg-none bg-color-gray"></div> -->
 
                 <div class="d-flex rwd-invoice-fix ml-0 ml-lg-5 align-items-start align-items-xl-center flex-column flex-sm-row section">
                   <div class="title font-14 mb-3 mb-sm-0">發票寄送地址: </div>
@@ -73,7 +136,7 @@
                         class="cus-vueselect cus-vueselect-180" placeholder="選擇捐贈單位" 
                         v-model="donateSelected" 
                         :options="donateOptions">
-                        <span slot="no-options">沒有資料</span>
+                        <span slot="no-options" class="font-12">沒有資料</span>
                       </v-select>
                     </div>
                   </div>
