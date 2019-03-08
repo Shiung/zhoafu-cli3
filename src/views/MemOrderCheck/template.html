@@ -1,23 +1,24 @@
-<div class="memOrderCheck">
+<div class="memOrderCheck px-0">
   
-  <ul class="nav nav-pills cart-menu border-bottom border-color-gary col-12" role="tablist">
-    <li class="nav-item ml-5">
-      <a class="nav-link rounded-0 active" data-toggle="pill" href="#cart-direct" role="tab" aria-controls="cart-direct" aria-selected="true">直購</a>
+  <ul class="nav nav-pills justify-content-center cart-menu border-bottom border-color-gary col-12" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link direct-nav-btn rounded-0 active" data-toggle="pill" href="#cart-direct" role="tab" aria-controls="cart-direct" aria-selected="true">直購</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link rounded-0" data-toggle="pill" href="#cart-joint" role="tab" aria-controls="cart-joint" aria-selected="false">連採</a>
+      <a class="nav-link joint-nav-btn rounded-0" data-toggle="pill" href="#cart-joint" role="tab" aria-controls="cart-joint" aria-selected="false">連採</a>
     </li>
   </ul> 
   
-  <div class="tab-content mb-3">
+  <div class="tab-content mb-3 px-3">
       <div class="tab-pane fade show active" id="cart-direct" role="tabpanel" aria-labelledby="cart-direct">
         <div v-for="item in 2" :key="item">
-          <div class="font-14 font-color-lightblue my-3">訂單編號: 201901140003213-{{item}}</div>
+          <div class="font-14 font-color-lightblue mt-3 mb-lg-3 mb-0">訂單編號: 201901140003213-{{item}}</div>
           <div class="row">
             <div class="col-12">
-              <table class="table  border cus-table">
+              <!-- 桌機 width> 1199 -->
+              <table class="table border cus-table d-lg-table d-none">
                 <thead class="thead-light">
-                  <tr class="text-center font-14">
+                  <tr class="text-center font-12">
                     <th>出貨單</th>
                     <th>付款方式</th>
                     <th>物流方式</th>
@@ -29,7 +30,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr class="text-center font-14">
+                  <tr class="text-center font-12" v-for="item in 3" :key="item">
                     <th scope="row">201901140003211</th>
                     <td>貨到付款</td>
                     <td>米羅藥局寄送</td>
@@ -38,12 +39,14 @@
                     <td>GN45789937</td>
                     <td>130000</td>
                     <td>
-                        <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
-                        <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">驗收</md-ripple></button>
-                        <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">問題單</md-ripple></button>
+                      <div class="d-flex justify-content-center align-items-center flex-column flex-xl-row">
+                        <button class="cus-btn p-0 font-12 m-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
+                        <button class="cus-btn p-0 font-12 m-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">驗收</md-ripple></button>
+                        <button class="cus-btn p-0 font-12 m-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">問題單</md-ripple></button>
+                      </div>
                     </td>
                   </tr>
-                  <tr class="text-center font-14">
+                  <!-- <tr class="text-center font-12">
                     <th scope="row">201901140003212</th>
                     <td>取貨付款</td>
                     <td>東京平台共通物流</td>
@@ -55,7 +58,7 @@
                       <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
                     </td>
                   </tr>
-                  <tr class="text-center font-14">
+                  <tr class="text-center font-12">
                     <th scope="row">201901140003213</th>
                     <td>取貨付款</td>
                     <td>神奇平台共通物流</td>
@@ -66,9 +69,41 @@
                     <td>
                       <button class="cus-btn p-0 font-12"><md-ripple class="d-flex align-items-center justify-content-center px-3 py-1">詳細</md-ripple></button>
                     </td>
-                  </tr>
+                  </tr> -->
                 </tbody>
               </table>
+
+              <!-- rwd -->
+              <md-list :md-expand-single="true" class='md-dense d-lg-none d-flex'>
+                <md-list-item md-expand class="border mb-1" v-for="item in 3" :key="item">
+                  <div class='d-flex align-items-center flex-wrap font-12'>
+                    <span class="mr-1">出貨單號 : 201901140003211-{{item}}</span>
+                    <div class='d-flex justify-content-start'>
+                      <div class='badge badge-warning p-1 mx-1'>檢貨中</div>
+                      <div class='badge badge-success p-1 mx-1'>出貨中</div>
+                    </div>
+                  </div>
+                  
+        
+                  <md-list slot="md-expand" class="py-4 font-12">
+                    <div class="col-12 d-flex justify-content-between align-items-start cus-table">
+                      <div class="d-flex flex-column">
+                        <div>
+                          <div><span class="mr-2">付款方式:</span><span>貨到付款</span></div>
+                          <div><span class="mr-2">物流方式:</span><span>米羅藥局寄送</span></div>
+                          <div><span class="mr-2">發票號碼:</span><span>GN45789937</span></div>
+                          <div><span class="mr-2">金額:</span><span>130000</span></div>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column">
+                          <button class="cus-btn p-0 font-12 mb-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-2 py-1">詳細</md-ripple></button>
+                          <button class="cus-btn p-0 font-12 mb-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-2 py-1">驗收</md-ripple></button>
+                          <button class="cus-btn p-0 font-12 mb-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-2 py-1">問題單</md-ripple></button>
+                      </div>
+                    </div>
+                  </md-list>
+                </md-list-item>
+              </md-list>
 
               <!-- <div class="d-flex justify-content-center">
                 <buttonType class="goShop my-5" btnStr="繼續購物" @stepGo="shopping"/>
