@@ -201,10 +201,29 @@ a:not(.md-button){
     .dropdown-toggle{
       border-color:$cus-green;
     }
+    .dropdown-menu{
+      border-color:$cus-green;
+    }
   }
 }
 .cus-vueselect-180{
   width: 160px;
+}
+.cus-vueselect-115{
+  width: 115px;
+  &.open{
+    .dropdown-menu{
+      min-width: 115px;
+    }
+  }
+}
+.cus-vueselect-125{
+  width: 125px;
+  &.open{
+    .dropdown-menu{
+      min-width: 125px;
+    }
+  }
 }
 // vue select fix 套件style end -------
 
