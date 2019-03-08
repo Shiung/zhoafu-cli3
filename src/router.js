@@ -11,38 +11,38 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: () => import('@/views/Home'),
+      component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
       redirect: '/',
       children: [
         {
           path: '',
           name: 'IndexPage',
-          component: () => import('@/views/IndexPage')
+          component: () => import(/* webpackChunkName: "IndexPage" */ '@/views/IndexPage')
         },
         {
           path: 'product/:id',
           name: 'product',
-          component: () => import('@/views/Product')
+          component: () => import(/* webpackChunkName: "product" */ '@/views/Product')
         },
         {
           path: 'cart',
           name: 'cart',
-          component: () => import('@/views/Cart')
+          component: () => import(/* webpackChunkName: "cart" */ '@/views/Cart')
         },
         {
           path: 'orderCheck',
           name: 'orderCheck',
-          component: () => import('@/views/OrderCheck')
+          component: () => import(/* webpackChunkName: "orderCheck" */ '@/views/OrderCheck')
         },
         {
           path: 'productCate/:id',
           name: 'productCate',
-          component: () => import('@/views/ProductCate')
+          component: () => import(/* webpackChunkName: "productCate" */ '@/views/ProductCate')
         },
         {
           path: 'memCenter',
           name: 'memCenter',
-          component: () => import('@/views/MemCenter'),
+          component: () => import(/* webpackChunkName: "memCenter" */ '@/views/MemCenter'),
           redirect: 'memCenter',
           children: [
             {
@@ -61,6 +61,11 @@ export default new Router({
               component: () => import('@/views/MemOrderCheck')
             }
           ]
+        },
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import(/* webpackChunkName: "login" */ '@/views/Login')
         }
       ]
     }
