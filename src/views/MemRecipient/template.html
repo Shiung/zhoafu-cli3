@@ -1,0 +1,98 @@
+<div class="memRecipient">
+  <div class="col-12 d-flex justify-content-center align-items-sm-start align-items-center flex-sm-row flex-column border-bottom border-color-gary py-4">
+    <div>
+      <div class="form-group">
+        <input class="form-control form-control-sm cus-input cus-with-250" type="text" placeholder="姓名">
+      </div>
+      <div class="form-group d-flex justify-content-between">
+        <v-select 
+          class="cus-vueselect cus-vueselect-115"
+          placeholder="城市" 
+          v-model="citySelected" 
+          :options="cityOptions">
+          <span slot="no-options" class=" font-12">沒有資料</span>
+        </v-select>
+        <v-select 
+          class="cus-vueselect cus-vueselect-125" 
+          placeholder="鄉鎮市區" 
+          v-model="townSelected" 
+          :options="townOptions">
+          <span slot="no-options">沒有資料</span>
+        </v-select>
+      </div>
+      <div class="form-group">
+        <input class="form-control form-control-sm cus-input cus-with-250" type="text" placeholder="聯絡電話">
+      </div>
+      <div class="form-group">
+        <input class="form-control form-control-sm cus-input cus-with-250" type="text" placeholder="地址">
+      </div>
+    </div>
+    <div class="ml-sm-3 ml-0">
+      <div class="form-group">
+        <textarea class="form-control cus-input cus-with-250" rows="3" placeholder="備註"></textarea>
+      </div>
+      <div class="d-flex justify-content-sm-end justify-content-center">
+        <buttonType class="goShop my-3" btnStr="儲存" @stepGo="save"/>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-3">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <label class="mb-0">收件人資訊 :</label>
+      <buttonType class="refresh" btnStr="重新整理" @stepGo="refresh">
+        <template slot="btn-icon"><md-icon>refresh</md-icon></template>
+      </buttonType>
+    </div>
+    
+
+    <!-- 桌機 width> 1199 -->
+    <table class="table border cus-table d-lg-table d-none">
+      <thead class="thead-light">
+        <tr class="text-center font-12">
+          <th>名字</th>
+          <th>聯絡電話</th>
+          <th>城市</th>
+          <th>鄉鎮市區</th>
+          <th>地址</th>
+          <th>備註</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="text-center font-12" v-for="item in 3" :key="item">
+          <th scope="row">stanley chen</th>
+          <td>09283729187</td>
+          <td>台北市</td>
+          <td>大安區</td>
+          <td>九如一路804號3樓</td>
+          <td>請聯絡店內值班人員</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- rwd -->
+    <md-list :md-expand-single="true" class='md-dense d-lg-none d-flex'>
+      <md-list-item md-expand class="border mb-1" v-for="item in 3" :key="item">
+        <div class='d-flex align-items-center flex-wrap font-12'>
+          <span class="mr-1">聯絡人 : stanley chen (09283729187)</span>
+        </div>
+        
+        <md-list slot="md-expand" class="py-4 font-12">
+          <div class="col-12 d-flex justify-content-between align-items-start cus-table">
+            <div class="d-flex flex-column">
+              <div>
+                <div><span class="mr-2">城市:</span><span>台北市</span></div>
+                <div><span class="mr-2">鄉鎮市區:</span><span>大安區</span></div>
+                <div><span class="mr-2">地址:</span><span>九如一路804號3樓</span></div>
+                <div><span class="mr-2">備註:</span><span>請聯絡店內值班人員</span></div>
+              </div>
+            </div>
+            <div class="d-flex flex-column">
+            </div>
+          </div>
+        </md-list>
+      </md-list-item>
+    </md-list>
+
+  </div>
+</div>

@@ -59,6 +59,11 @@ export default new Router({
               path: 'memOrderCheck',
               name: 'memOrderCheck',
               component: () => import('@/views/MemOrderCheck')
+            },
+            {
+              path: 'memRecipient',
+              name: 'memRecipient',
+              component: () => import('@/views/MemRecipient')
             }
           ]
         },
