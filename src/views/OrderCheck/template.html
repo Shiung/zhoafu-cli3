@@ -29,7 +29,8 @@
           <div class="font-14 font-color-lightblue my-3">訂單編號: 201901140003213</div>
           <div class="row">
             <div class="col-12">
-              <table class="table  border cus-table">
+              <!-- 桌機 width > 767 -->
+              <table class="table  border cus-table d-md-table d-none">
                 <thead class="thead-light">
                   <tr class="text-center font-14">
                     <th>出貨單</th>
@@ -73,6 +74,34 @@
                   </tr>
                 </tbody>
               </table>
+
+              <!-- rwd width < 768 -->
+              <md-list :md-expand-single="true" class='md-dense d-md-none d-flex'>
+                <md-list-item md-expand class="border mb-1" v-for="item in 3" :key="item">
+                  <div class='d-flex align-items-center flex-wrap font-12'>
+                    <span class="mr-1">出貨單號 : 201901140003211-{{item}}</span>
+                    <div class='d-flex justify-content-start'>
+                      <div class='badge badge-warning p-1 mx-1'>檢貨中</div>
+                      <div class='badge badge-success p-1 mx-1'>出貨中</div>
+                    </div>
+                  </div>
+                  
+        
+                  <md-list slot="md-expand" class="py-4 font-12">
+                    <div class="col-12 d-flex justify-content-between align-items-start cus-table">
+                      <div class="d-flex flex-column">
+                        <div>
+                          <div><span class="mr-2">付款方式:</span><span>貨到付款</span></div>
+                          <div><span class="mr-2">物流方式:</span><span>米羅藥局寄送</span></div>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-column">
+                          <button class="cus-btn p-0 font-12 mb-1 text-nowrap"><md-ripple class="d-flex align-items-center justify-content-center px-2 py-1">詳細</md-ripple></button>
+                      </div>
+                    </div>
+                  </md-list>
+                </md-list-item>
+              </md-list>
 
               <div class="d-flex justify-content-center">
                 <buttonType class="goShop my-5" btnStr="繼續購物" @stepGo="shopping"/>

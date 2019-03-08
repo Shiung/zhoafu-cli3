@@ -4,9 +4,14 @@
     min-height: 300px;
   }
   .orderStatus{
-    padding: 80px 0;
+    // padding: 80px 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
     .img{
-      width: 50px;
+      // width: 50px;
+      flex: 50px;
+      flex-grow: 0;
+      flex-shrink: 0;
     }
   }
 }
