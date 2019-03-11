@@ -22,6 +22,9 @@ import vSelect from 'vue-select'
 import { MdField, MdRipple, MdButton, MdRadio, MdMenu, MdList, MdDialog, MdSwitch, MdSpeedDial } from 'vue-material/dist/components'
 // vue-dattime
 import Datetime from 'vue-datetime'
+// vee 驗證
+import VeeValidate from 'vee-validate'
+import zhTwValidate from 'vee-validate/dist/locale/zh_TW'
 // filters
 import currencyFilter from './filters/currency'
 // 置頂function
@@ -54,6 +57,10 @@ Vue.use(MdSpeedDial)
 
 // vue datetime
 Vue.use(Datetime)
+
+// vee use
+Vue.use(VeeValidate)
+VeeValidate.Validator.localize('zh_TW', zhTwValidate) // 轉為中文字
 
 // loading
 Vue.component('loading', Loading) // 全域使用
