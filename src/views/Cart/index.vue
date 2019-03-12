@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'cart',
   data () {
@@ -28,6 +29,10 @@ export default {
       ]
     }
   },
+  computed: {
+    // vuex
+    ...mapGetters(['tokenVal'])
+  },
   components: {
     imgLazyLoading: () => import('@/components/ImgLazyLoad'),
     countItem: () => import('@/components/CountItem'),
@@ -55,6 +60,20 @@ export default {
   },
   mounted () {
     this.getCartList()
+    if (!this.tokenVal) {
+      this.$swal({
+        title: '請登入帳號',
+        icon: 'warning'
+      })
+      this.$router.replace({ name: 'home' })
+    }
+  },
+  watch: {
+    tokenVal (val) {
+      if (!val) {
+        this.$router.replace({ name: 'home' })
+      }
+    }
   }
 }
 </script>
