@@ -68,28 +68,11 @@ export default {
       this.$router.push({ name: 'home' })
     },
     showMenu () {
-      // 沒登入帳號
-      if (!this.tokenVal) {
-        this.$swal({
-          title: `請登入帳號`,
-          icon: 'warning'
-        })
-        return
-      }
-      // 有登入token 並請求資料
       this.menuListShowLoading = true
       this.showMenuBoxSwitch = !this.showMenuBoxSwitch
       this.getMenuList()
     },
     showMenuSecond (id) {
-      // 沒登入帳號
-      if (!this.tokenVal) {
-        this.$swal({
-          title: `請登入帳號`,
-          icon: 'warning'
-        })
-        return
-      }
       this.showMenuBoxActive = id
       this.showMenuBoxSecondSwitch = true
       this.menuListSecondShowLoading = true
@@ -98,14 +81,6 @@ export default {
       this.showMenuBoxThirdSwitch = false
     },
     showMenuThird (id) {
-      // 沒登入帳號
-      if (!this.tokenVal) {
-        this.$swal({
-          title: `請登入帳號`,
-          icon: 'warning'
-        })
-        return
-      }
       this.showMenuBox2Active = id
       this.showMenuBoxThirdSwitch = true
       this.menuListThirdShowLoading = true
@@ -179,14 +154,6 @@ export default {
     },
     // rwd
     rwdHandler (step, iduse, name) {
-      // 沒登入帳號
-      if (!this.tokenVal) {
-        this.$swal({
-          title: `請登入帳號`,
-          icon: 'warning'
-        })
-        return
-      }
       this.rwdMenuStep = step
       this.rwdMenuGuide_step = name
       // 儲存歷史
