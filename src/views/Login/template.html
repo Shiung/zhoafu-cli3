@@ -3,13 +3,15 @@
     <div class="row">
       <div class="col-12">
         <div class="login-box bg-white d-flex flex-column align-items-center py-3">
-          <div class="form-group">
+          <div class="form-group" :class="{'was-validated' : !errors.has('ID') && account.length >= 6}">
             <label>帳號</label>
-            <input class="form-control form-control-sm cus-input cus-with-250" type="text" placeholder="請輸入帳號">
+            <input v-model.trim="account" v-validate="'required|min:6'" name="ID" class="form-control form-control-sm cus-input cus-with-250" type="text" placeholder="請輸入帳號" :class="{'is-invalid' : errors.has('ID')}">
+            <span class="font-12 text-danger">{{ errors.first('ID') }}</span>
           </div>
-          <div class="form-group">
+          <div class="form-group" :class="{'was-validated' : !errors.has('password') && psw.length >= 6}">
             <label>密碼</label>
-            <input class="form-control form-control-sm cus-input cus-with-250" type="text" placeholder="請輸入密碼">
+            <input v-model.trim="psw" v-validate="'required|min:6'" name="password" class="form-control form-control-sm cus-input cus-with-250" type="password" placeholder="請輸入密碼" :class="{'is-invalid' : errors.has('password')}" @keyup.enter="login">
+            <span class="font-12 text-danger">{{ errors.first('password') }}</span>
           </div>
     
           <buttonType class="goShop my-5" btnStr="登入" @stepGo="login"/>
