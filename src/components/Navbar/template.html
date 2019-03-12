@@ -40,11 +40,11 @@
             <div class="line"></div>
         </li>
       </ul>
-      <div class="account border d-flex justify-content-between align-items-center font-12 px-2">
-        <div>高雄柏順藥局</div>
-        <div class="line"></div>
-        <a href="javascript:;" @click="logout">登出</a>
-        <!-- <a class="login" href="javascript:;">登入</a> -->
+      <div class="account border d-flex justify-content-around align-items-center font-12 px-2">
+        <div v-if="userInfo.is_active">{{userInfo.name}}</div>
+        <div class="line" v-if="userInfo.is_active"></div>
+        <a href="javascript:;" @click="logout" v-if="userInfo.is_active">登出</a>
+        <a class="login" href="javascript:;" @click="login" v-if="!userInfo.is_active">登入</a>
       </div>
        
       <div class="menu-option">
@@ -200,31 +200,30 @@
                   <a class="nav-link text-nowrap" href="javascript:;">{{item2.name}}</a>
                   <i class="material-icons">keyboard_arrow_right</i>
               </li>
-            </ul>
-          </transition>
-
-          <transition name="fade" mode="out-in" appear>
-            <div class="forthMenu d-flex" v-if="showMenuBoxThirdSwitch">
-              <ul class="forthMenuUL">
-                <loading 
-                  :active.sync="menuListThirdShowLoading"
-                  color="#fff"
-                  :opacity= "loadingOpacityZero"
-                  :is-full-page="fullNone"
-                  loader="dots"
-                ></loading>
-                <li class="d-flex justify-content-start align-items-center" v-for="item3 in productCateListThird" :key="item3.id">
-                    <a class="nav-link text-nowrap flex-fill" href="javascript:;" @click="goCatePage(item3.id)">{{item3.name}}</a>
-                </li>
-              </ul>
-              <div class="flex-fill col-12 pt-3 ml-3">
-                  <div class="bg-white mb-3" v-for="item in navAdList" :key="item.id">
-                      <transition name="fade" mode="out-in" appear>
-                        <imgLazyLoading class="navAdBox" :imgUrl="item.url" imgError="/img/image_error_3x1.png"/>
-                      </transition> 
+              <transition name="fade" mode="out-in" appear>
+                <div class="forthMenu d-flex" v-if="showMenuBoxThirdSwitch">
+                  <ul class="forthMenuUL">
+                    <loading 
+                      :active.sync="menuListThirdShowLoading"
+                      color="#fff"
+                      :opacity= "loadingOpacityZero"
+                      :is-full-page="fullNone"
+                      loader="dots"
+                    ></loading>
+                    <li class="d-flex justify-content-start align-items-center" v-for="item3 in productCateListThird" :key="item3.id">
+                        <a class="nav-link text-nowrap flex-fill" href="javascript:;" @click="goCatePage(item3.id)">{{item3.name}}</a>
+                    </li>
+                  </ul>
+                  <div class="flex-fill col-12 pt-3 ml-3">
+                      <div class="bg-white mb-3" v-for="item in 2" :key="item">
+                          <transition name="fade" mode="out-in" appear>
+                            <imgLazyLoading class="navAdBox" imgUrl="/img/nav-ad-1.png" imgError="/img/image_error_3x1.png"/>
+                          </transition> 
+                      </div>
                   </div>
-              </div>
-            </div>
+                </div>
+              </transition>
+            </ul>
           </transition>
         </ul>
         

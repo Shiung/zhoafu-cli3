@@ -113,13 +113,13 @@ $menuBar3Width : 400px;
             }
             >a{
                 color:#fff;
-                padding: 10px 0; 
+                padding: 10px 15px; 
             }
           }
           ul.thirdMenu{
             @extend %extendliststyleOFF;
             position: absolute;
-            width: 200px;
+            width: 160px;
             right: 0;
             top:0;
             transform: translateX(100%);
@@ -131,7 +131,7 @@ $menuBar3Width : 400px;
             >li{
               >a{
                 color:#fff;
-                padding: 10px 0; 
+                padding: 10px 15px; 
                 overflow: hidden;
               }
             }
@@ -249,14 +249,14 @@ $menuBar3Width : 400px;
     .forthMenu{
       position: absolute;
       min-width: $menuBar3Width ;
-      right: -$menuBar2Width;
+      right: 0; //-$menuBar2Width;
       transform: translateX(100%);
       top:0;
       background-color: $cus-menuBar-third;
       min-height: 100%;
       ul.forthMenuUL{
         @extend %extendliststyleOFF;
-        width: 120px;
+        width: 150px;//120px;
         flex-grow: 0;
         flex-shrink: 0;
         >li{

@@ -11,6 +11,8 @@ export default {
       showMenuBoxThirdSwitch: false, // 第三層導覽頁開啟
       productSecondMenuLoading: true,
       productSecondMenuLoadingOpacity: 0.8,
+      // api url
+      mainNavApiUrl: `${process.env.VUE_APP_APIPATH}/category`,
       // 商品分類
       productCateList: [],
       productCateListFirst: [],
@@ -54,23 +56,40 @@ export default {
       }
     },
     // vuex
-    ...mapGetters(['menuStatus'])
+    ...mapGetters(['menuStatus', 'tokenVal', 'userInfo'])
   },
   components: {
     imgLazyLoading: () => import('@/components/ImgLazyLoad')
   },
   methods: {
     // vuex
-    ...mapActions(['menu_status']),
+    ...mapActions(['menu_status', 'log_out']),
     goHome () {
       this.$router.push({ name: 'home' })
     },
     showMenu () {
+      // 沒登入帳號
+      if (!this.tokenVal) {
+        this.$swal({
+          title: `請登入帳號`,
+          icon: 'warning'
+        })
+        return
+      }
+      // 有登入token 並請求資料
       this.menuListShowLoading = true
       this.showMenuBoxSwitch = !this.showMenuBoxSwitch
       this.getMenuList()
     },
     showMenuSecond (id) {
+      // 沒登入帳號
+      if (!this.tokenVal) {
+        this.$swal({
+          title: `請登入帳號`,
+          icon: 'warning'
+        })
+        return
+      }
       this.showMenuBoxActive = id
       this.showMenuBoxSecondSwitch = true
       this.menuListSecondShowLoading = true
@@ -79,6 +98,14 @@ export default {
       this.showMenuBoxThirdSwitch = false
     },
     showMenuThird (id) {
+      // 沒登入帳號
+      if (!this.tokenVal) {
+        this.$swal({
+          title: `請登入帳號`,
+          icon: 'warning'
+        })
+        return
+      }
       this.showMenuBox2Active = id
       this.showMenuBoxThirdSwitch = true
       this.menuListThirdShowLoading = true
@@ -88,22 +115,62 @@ export default {
       this.getNavAdList()
     },
     getMenuList () {
-      this.axios.get('http://localhost:5000/nav').then((res) => {
-        this.productCateListFirst = res.data
+      // 2. api server
+      let url = this.mainNavApiUrl
+      this.axios.get(url, {
+        headers: {
+          'Authorization': `${this.tokenVal}`
+        }
+      }).then((res) => {
+        this.productCateListFirst = res.data.data
         this.menuListShowLoading = false
+      }).catch((error) => {
+        this.axiosErrorCode(error)
       })
     },
     getMenuSecondList (id) {
-      this.axios.get(`http://localhost:5000/nav/${id}`).then((res) => {
-        this.productCateListSecond = res.data.child
+      // 2. api server
+      let url = this.mainNavApiUrl
+      let params = {
+        id: id
+      }
+      this.axios.get(url, {
+        headers: {
+          'Authorization': `${this.tokenVal}`
+        },
+        params
+      }).then((res) => {
+        this.productCateListSecond = res.data.data[0].children
         this.menuListSecondShowLoading = false
+      }).catch((error) => {
+        this.axiosErrorCode(error)
       })
     },
     getMenuThirdList (id) {
-      this.axios.get(`http://localhost:5000/nav_level3_${id}`).then((res) => {
-        this.productCateListThird = res.data
+      // 2. api server
+      let url = this.mainNavApiUrl
+      let params = {
+        id: id
+      }
+      this.axios.get(url, {
+        headers: {
+          'Authorization': `${this.tokenVal}`
+        },
+        params
+      }).then((res) => {
+        this.productCateListThird = res.data.data[0].children
         this.menuListThirdShowLoading = false
+      }).catch((error) => {
+        this.axiosErrorCode(error)
       })
+    },
+    axiosErrorCode (error) {
+      if (error.response.data.code === 429) {
+        this.$swal({
+          title: error.response.data.message,
+          icon: 'error'
+        })
+      }
     },
     getNavAdList () {
       this.axios.get(`http://localhost:5000/nav-ad`).then((res) => {
@@ -112,6 +179,14 @@ export default {
     },
     // rwd
     rwdHandler (step, iduse, name) {
+      // 沒登入帳號
+      if (!this.tokenVal) {
+        this.$swal({
+          title: `請登入帳號`,
+          icon: 'warning'
+        })
+        return
+      }
       this.rwdMenuStep = step
       this.rwdMenuGuide_step = name
       // 儲存歷史
@@ -145,14 +220,17 @@ export default {
       // 轉址
       this.$router.push({ name: 'productCate', params: { id: idselected } })
     },
+    login () {
+      this.$router.push({ name: 'login' })
+    },
     logout () {
-      alert('登出')
+      this.log_out()
     }
   },
   mounted () {
-    this.axios.get('http://localhost:5000/nav').then((res) => {
-      this.productCateList = res.data
-    })
+    // this.axios.get('http://localhost:5000/nav').then((res) => {
+    //   this.productCateList = res.data
+    // })
   },
   watch: {
     showMenuBoxSwitch (val) {
