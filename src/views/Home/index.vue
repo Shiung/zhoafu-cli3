@@ -80,7 +80,7 @@ export default {
       } // else console.log('沒有存在storage')
       // console.log('沒有存在vuex token')
       // 沒有登入
-    } else {      
+    } else {
       // console.log('有存在vuex token')
       // 已經登入
     }
