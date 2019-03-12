@@ -48,12 +48,10 @@ export default {
             }
           }).catch((error) => {
             // handle error
-            if (error.response.data.code === 401) {
-              this.$swal({
-                title: error.response.data.message,
-                icon: 'error'
-              })
-            }
+            this.$swal({
+              title: error.response.data.message,
+              icon: 'error'
+            })
           }).then(() => {
             this.$store.commit('ISLOADING', false)
           })
