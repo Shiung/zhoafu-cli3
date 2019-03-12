@@ -80,7 +80,6 @@ export default {
           setTimeout(() => {
             this.data = res.data
             resolve(res.data)
-            console.log('有唷')
           }, 0)
         }).catch((error) => {
           console.log(error)
