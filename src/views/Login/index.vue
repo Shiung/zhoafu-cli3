@@ -1,5 +1,5 @@
 <script>
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'login',
   data () {
@@ -9,6 +9,10 @@ export default {
       // api url 登入
       apiPath: `${process.env.VUE_APP_APIPATH}/auth/login`
     }
+  },
+  computed: {
+    // vuex
+    ...mapGetters(['tokenVal'])
   },
   components: {
     buttonType: () => import('@/components/ButtonItem')
@@ -55,6 +59,11 @@ export default {
           })
         }
       })
+    }
+  },
+  mounted () {
+    if (this.tokenVal) {
+      this.$router.replace({ name: 'home' })
     }
   }
 }

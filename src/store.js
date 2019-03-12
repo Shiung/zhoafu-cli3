@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     menuSwitch: false,
     isLoading: false, // 會員狀態確認
+    isShowing: false, // router-view page 打開
     // token
     token: '',
     cookieKey: 'zhoafu_token',
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     },
     ISLOADING (state, payload) {
       state.isLoading = payload
+    },
+    ISSHOWING (state, payload) {
+      state.isShowing = payload
     },
     // token
     TOKENNEW (state, payload) {
@@ -35,6 +39,9 @@ export default new Vuex.Store({
     },
     loading_status (context, params) {
       context.commit('ISLOADING', params)
+    },
+    showing_status (context, params) {
+      context.commit('ISSHOWING', params)
     },
     // token
     token_update (context, newtoken) {
@@ -69,6 +76,7 @@ export default new Vuex.Store({
   getters: {
     menuStatus: state => state.menuSwitch,
     isLoading: state => state.isLoading,
+    isShowing: state => state.isShowing,
     tokenVal: state => state.token,
     cookieKeyVal: state => state.cookieKey,
     userInfo: state => state.user

@@ -10,7 +10,7 @@ export default {
   },
   computed: {
     // vuex
-    ...mapGetters(['menuStatus', 'cookieKeyVal', 'tokenVal'])
+    ...mapGetters(['menuStatus', 'cookieKeyVal', 'tokenVal', 'isShowing'])
   },
   components: {
     navBar: () => import('@/components/Navbar'),
@@ -18,7 +18,7 @@ export default {
   },
   methods: {
     // vuex
-    ...mapActions(['token_update', 'remove_cookie', 'user_info', 'loading_status']),
+    ...mapActions(['token_update', 'remove_cookie', 'user_info', 'loading_status', 'showing_status']),
     gotop () {
       $('html, body').animate({
         'scrollTop': 0 }, 'slow')
@@ -32,12 +32,6 @@ export default {
     getlocalStorageStatus () {
       let key = this.cookieKeyVal
       return localStorage[key] ? localStorage[key] : null
-    },
-    // router path
-    routerCheck () {
-      if (this.$route.name === 'login') {
-        this.$router.replace({ name: 'home' })
-      }
     }
   },
   mounted () {
@@ -64,25 +58,25 @@ export default {
             // 儲存storage token 到vuex
             this.$store.commit('TOKENNEW', storageToken)
           }
-          this.routerCheck()
         }).catch((error) => {
-          if (error.response.data.code === 500) {
-            // token 異常
-            this.remove_cookie()
-            this.$swal({
-              title: error.response.data.message,
-              icon: 'error'
-            })
-          } else console.log(error.response)
+          // token 異常
+          this.$swal({
+            title: error.response.data.message,
+            icon: 'error'
+          })
+          this.remove_cookie()
         }).then(() => {
           this.loading_status(false) // 頁面loading
+          this.showing_status(true) // 頁面打開
         })
-      } // else console.log('沒有存在storage')
-      // console.log('沒有存在vuex token')
-      // 沒有登入
+      } else {
+        // 沒有登入
+        this.showing_status(true) // 頁面打開
+      }
     } else {
       // console.log('有存在vuex token')
       // 已經登入
+      this.showing_status(true) // 頁面打開
     }
   }
 }

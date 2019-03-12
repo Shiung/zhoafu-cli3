@@ -1,5 +1,22 @@
 @import '../../assets/scss/customer/utilty';
 
+// 內頁高度
+.innerPageMinHeight{
+  min-height: calc( 100vh - #{$navHeight} - 282px );
+  @media screen and (max-width: 1199px){
+    min-height: calc( 100vh - #{$navHeight} - 402px );
+  }
+  @media screen and (max-width: 991px){
+    min-height: calc( 100vh - #{$navHeight} - 575px );
+  }
+  @media screen and (max-width: 767px){
+    min-height: calc( 100vh - #{$navHeightRWD} - #{$navHeightSearchRwd} - 575px );
+  }
+  @media screen and (max-width: 575px){
+    min-height: calc( 100vh - #{$navHeightRWD} - #{$navHeightSearchRwd} - 726px );
+  }
+}
+
 .home{
   position: relative;
   padding-top: $navHeight;

@@ -2,7 +2,9 @@
   <navBar/>
   <!-- Home -->
   <!-- <div class="content">home</div> -->
-  <router-view></router-view> 
+  <div class="innerPageMinHeight">
+    <router-view v-if="isShowing"></router-view>
+  </div>
 
   <!-- 功能 -->
   <!-- <transition name="gotopOption" mode="out-in" appear>
