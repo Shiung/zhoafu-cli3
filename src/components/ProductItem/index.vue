@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'productItem',
   props: {
@@ -25,6 +26,10 @@ export default {
       type: String,
       default: null
     }
+  },
+  computed: {
+    // vuex
+    ...mapGetters(['tokenVal'])
   },
   methods: {
     goPage () {
