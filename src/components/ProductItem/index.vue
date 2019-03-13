@@ -3,7 +3,7 @@ export default {
   name: 'productItem',
   props: {
     productID: {
-      type: String,
+      type: Number,
       // required: true,
       default: null
     },
@@ -18,7 +18,7 @@ export default {
     },
     price: {
       type: Number,
-      required: true,
+      // required: true,
       default: null
     },
     img: {
