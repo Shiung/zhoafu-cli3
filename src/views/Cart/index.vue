@@ -64,11 +64,6 @@ export default {
     buttonType: () => import('@/components/ButtonItem')
   },
   methods: {
-    getCartList () {
-      this.axios.get(`http://localhost:5000/cartList`).then((res) => {
-        this.cartList = res.data
-      })
-    },
     shopping () {
       this.$swal({
         title: `繼續購物`,
@@ -83,7 +78,6 @@ export default {
     }
   },
   mounted () {
-    // this.getCartList()
     if (!this.tokenVal) {
       this.$swal({
         title: '請登入帳號',
