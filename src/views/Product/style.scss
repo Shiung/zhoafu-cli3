@@ -261,6 +261,29 @@ $expiry-bg: #e2eefd;
         }
       }
     }
+
+    // rwd 商品規格 / 退換貨 / 相關類別 fix
+    @media screen and (max-width: 767px) {
+      .product-cate-menu{
+        >.nav-item{
+          flex:1;
+          >a{
+            width: 100%;
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 575px) {
+      .product-cate-menu{
+        >.nav-item{
+          >a{
+            font-size: 12px;
+            padding-right: 0;
+            padding-left: 0;
+          }
+        }
+      }
+    }
   }
 
   .related-product-box{
