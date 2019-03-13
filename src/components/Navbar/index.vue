@@ -85,9 +85,7 @@ export default {
       this.showMenuBoxThirdSwitch = true
       this.menuListThirdShowLoading = true
       this.productCateListThird = []
-      this.navAdList = []
       this.getMenuThirdList(id)
-      this.getNavAdList()
     },
     getMenuList () {
       // 2. api server
@@ -147,11 +145,6 @@ export default {
         })
       }
     },
-    getNavAdList () {
-      this.axios.get(`http://localhost:5000/nav-ad`).then((res) => {
-        this.navAdList = res.data
-      })
-    },
     // rwd
     rwdHandler (step, iduse, name) {
       this.rwdMenuStep = step
@@ -195,9 +188,6 @@ export default {
     }
   },
   mounted () {
-    // this.axios.get('http://localhost:5000/nav').then((res) => {
-    //   this.productCateList = res.data
-    // })
   },
   watch: {
     showMenuBoxSwitch (val) {
