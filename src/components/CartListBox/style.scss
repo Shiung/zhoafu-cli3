@@ -52,4 +52,20 @@
       border-right: none!important;
     }
   }
+  @media screen and (max-width: 767px){
+    .first-area{
+      .cart-list-img{
+        flex: 80px;
+        flex-grow: 0;
+      }
+    }  
+  }
+  @media screen and (max-width: 575px){
+    .first-area{
+      .cart-list-img{
+        flex: 70px;
+        flex-grow: 0;
+      }
+    }  
+  }
 }
