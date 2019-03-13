@@ -15,7 +15,7 @@
     @lazyLoaded="handleLazyLoaded"
     @lazyLoadError="handleLazeLoadError">
 
-    <a href="javascript:;" class="banner-img position-relative d-flex justify-content-center align-items-center" v-for="(item,key) in data" :key="key">
+    <a href="javascript:;" class="banner-img position-relative d-flex justify-content-center align-items-center" v-for="(item,key) in banerList" :key="item.id">
       <img :data-lazy="item.url" class="" alt="">
       <div class="spinner-border lazyloadingStatus" role="status">
         <span class="sr-only">Loading...</span>

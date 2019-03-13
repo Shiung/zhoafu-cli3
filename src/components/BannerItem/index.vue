@@ -6,6 +6,10 @@ export default {
     autoplayStatus: {
       type: Boolean,
       default: true
+    },
+    banerList: {
+      type: Array,
+      default: null
     }
   },
   data () {
@@ -21,8 +25,7 @@ export default {
         dots: true,
         prevArrow: '<button type="button" class="slick-prev"><i class="material-icons">chevron_left</i></button>',
         nextArrow: '<button type="button" class="slick-next"><i class="material-icons">chevron_right</i></button>'
-      },
-      data: []
+      }
     }
   },
   methods: {
@@ -72,21 +75,6 @@ export default {
     },
     handleLazeLoadError (event, slick, image, imageSource) {
       // console.log('handleLazeLoadError', event, slick, image, imageSource)
-    },
-    // get data
-    getData () {
-      return new Promise((resolve, reject) => {
-        this.axios.get('http://localhost:5000/banner').then((res) => {
-          setTimeout(() => {
-            this.data = res.data
-            resolve(res.data)
-          }, 0)
-        }).catch((error) => {
-          console.log(error)
-          resolve(false)
-        })
-        // resolve(true)
-      })
     }
   },
   beforeUpdate () {
@@ -99,11 +87,11 @@ export default {
     // clear timer
     // gc
   },
-  async mounted () {
-    await this.getData()
-    this.slickOptions.autoplay = this.autoplayStatus
-    // this.reInit()
-    this.$refs.slick.create()
+  mounted () {
+    this.$nextTick(() => {
+      this.slickOptions.autoplay = this.autoplayStatus
+      this.reInit()
+    })
   }
 }
 </script>
