@@ -41,6 +41,17 @@ $btn-bottom : #f4f6f8 ;
       }
     }
   }
+  @media screen and (max-width: 767px) {
+     >li{
+       &.countShow{
+         padding-top: 0;
+         padding-bottom: 0;
+         >input{
+           height: 30px;
+         }
+       }
+     }
+  }
 }
 
 input:focus{
