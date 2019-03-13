@@ -4,7 +4,31 @@ export default {
   name: 'cart',
   data () {
     return {
-      cartList: [],
+      // cartList: [],
+      // 測試資料 ----------------
+      cartList: [
+        {
+          'id': 1,
+          'idModel': 'BA20190131006330',
+          'title': '【諾鈣C】維他命C+鈣 發泡錠 20錠(柳橙口味+檸檬口味)',
+          'oPrice': 950,
+          'price': 850,
+          'url': '/img/product-1.png',
+          'vendor': '兆福藥局',
+          'stock': 5
+        },
+        {
+          'id': 2,
+          'idModel': 'BA20190131006331',
+          'title': '曼秀雷敦水份潤唇膏-無香料 3.5g',
+          'oPrice': 450,
+          'price': 150,
+          'url': '/img/product-2.png',
+          'vendor': '兆福藥局',
+          'stock': 2
+        }
+      ],
+      // 測試資料 ---------------- end
       invoice: '',
       pointUse: false,
       // vue select
@@ -59,7 +83,7 @@ export default {
     }
   },
   mounted () {
-    this.getCartList()
+    // this.getCartList()
     if (!this.tokenVal) {
       this.$swal({
         title: '請登入帳號',
