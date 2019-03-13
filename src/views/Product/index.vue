@@ -1,4 +1,5 @@
 <script>
+import { mapGetters } from 'vuex'
 export default {
   name: 'product',
   data () {
@@ -7,6 +8,12 @@ export default {
       productImg: null,
       imgList: [],
       productTitle: null,
+      productOriginPrice: null,
+      productPrice: null,
+      productStock: 0,
+      productStockUnit: null, // 單位
+      // api path
+      apiPath: `${process.env.VUE_APP_APIPATH}`,
       // 相關商品
       relateProductList: [],
       // vue-carousel
@@ -19,12 +26,15 @@ export default {
       // loading
       loadingOpacity: 0.8,
       fullNone: false,
+      productShowLoading: true,
       relateProductShowLoading: true,
       // countItem
       countNum: 1
     }
   },
   computed: {
+    // vuex
+    ...mapGetters(['tokenVal']),
     productID () {
       return this.$route.params.id
     }
@@ -50,25 +60,64 @@ export default {
     },
     imgChange (img) {
       return new Promise((resolve, reject) => {
-        // 新的IMG
-        setTimeout(() => {
-          this.productImg = img
-          resolve(true)
-        }, 0)
+        this.productImg = img
+        resolve(true)
       })
     },
     getProduct () {
-      this.axios.get(`http://localhost:5000/productItem`).then((res) => {
-        this.productImg = res.data.imgs[0].url
-        this.imgList = res.data.imgs
-        this.productTitle = res.data.title
-        this.showImg = true
+      // 初始
+      this.productShowLoading = true
+      this.showImg = false
+      // api
+      let url = `${this.apiPath}/merchandise/${this.productID}`
+      return new Promise((resolve, reject) => {
+        this.axios.get(url).then((res) => {
+          this.productTitle = res.data.data.name_tw
+          this.productStock = res.data.data.stock
+          this.productOriginPrice = res.data.data.list_price
+          this.productPrice = res.data.data.price
+          this.countNum = res.data.data.stock === 0 ? res.data.data.stock : 1
+          this.productStockUnit = res.data.data.unit
+          // 商品圖片
+          this.productImg = '/img/product-1.png'
+          this.imgList = [
+            {
+              url: '/img/product-1.png'
+            },
+            {
+              url: '/img/product-2.png'
+            },
+            {
+              url: '/img/product-3.png'
+            },
+            {
+              url: '/img/product-4.png'
+            },
+            {
+              url: '/img/product-5.png'
+            }
+          ]
+          this.showImg = true
+          this.productShowLoading = false
+          console.log(res.data.data)
+          console.log('商品資訊')
+          resolve(true)
+        })
       })
     },
+    // 相關商品
     getActProductList () {
-      this.axios.get(`http://localhost:5000/productAct`).then((res) => {
-        this.relateProductList = res.data[0].data
-        this.relateProductShowLoading = false
+      // 初始
+      this.relateProductShowLoading = true
+      // api
+      let url = `${this.apiPath}/merchandise`
+      return new Promise((resolve, reject) => {
+        this.axios.get(url).then((res) => {
+          this.relateProductList = res.data.data
+          this.relateProductShowLoading = false
+          console.log('相關商品')
+          resolve(true)
+        })
       })
     },
     goCart () {
@@ -82,14 +131,14 @@ export default {
       this.countNum = num
     }
   },
-  mounted () {
-    this.getProduct()
-    this.getActProductList()
+  async mounted () {
+    await this.getProduct()
+    await this.getActProductList()
   },
   watch: {
-    productID (val, old) {
-      this.getProduct()
-      this.getActProductList()
+    async productID (val, old) {
+      await this.getProduct()
+      await this.getActProductList()
     }
   }
 }
