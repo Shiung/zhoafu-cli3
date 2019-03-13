@@ -3,7 +3,9 @@
   <!-- Home -->
   <!-- <div class="content">home</div> -->
   <div class="innerPageMinHeight">
-    <router-view v-if="isShowing"></router-view>
+    <transition name="page" mode="out-in" appear>
+      <router-view v-if="isShowing"></router-view>
+    </transition>  
   </div>
 
   <!-- 功能 -->

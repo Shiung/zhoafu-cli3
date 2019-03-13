@@ -32,6 +32,24 @@
   transition: .5s;
 }
 
+// page
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.page-enter-to,
+.page-leave {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: .3s;
+}
+
 
 //selectOption
 .selectOption-enter,
