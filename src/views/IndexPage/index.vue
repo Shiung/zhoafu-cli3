@@ -78,9 +78,6 @@ export default {
       }
       return new Promise((resolve, reject) => {
         this.axios.get(url, {
-          headers: {
-            'Authorization': `${this.tokenVal}`
-          },
           params
         }).then((res) => {
           this.jointProductsList = res.data.data
@@ -98,9 +95,6 @@ export default {
       }
       return new Promise((resolve, reject) => {
         this.axios.get(url, {
-          headers: {
-            'Authorization': `${this.tokenVal}`
-          },
           params
         }).then((res) => {
           this.recommendProductsList = res.data.data
@@ -119,9 +113,6 @@ export default {
       }
       return new Promise((resolve, reject) => {
         this.axios.get(url, {
-          headers: {
-            'Authorization': `${this.tokenVal}`
-          },
           params
         }).then((res) => {
           this.fastProductsList = res.data.data
@@ -140,9 +131,6 @@ export default {
       }
       return new Promise((resolve, reject) => {
         this.axios.get(url, {
-          headers: {
-            'Authorization': `${this.tokenVal}`
-          },
           params
         }).then((res) => {
           this.hotSaleProductsList = res.data.data
@@ -160,9 +148,6 @@ export default {
       }
       return new Promise((resolve, reject) => {
         this.axios.get(url, {
-          headers: {
-            'Authorization': `${this.tokenVal}`
-          },
           params
         }).then((res) => {
           this.actListAPI = res.data.data
