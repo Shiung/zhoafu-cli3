@@ -13,70 +13,70 @@ export default {
       // 產品資訊
       data: [
         {
-          'id': 'pc01',
+          'id': 1,
           'name': '三多L-麩醯胺酸鋅',
           'oPrice': 110,
           'price': 99,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc02',
+          'id': 2,
           'name': '曼秀雷敦全家潤唇膏',
           'oPrice': 110,
           'price': 99,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc03',
+          'id': 3,
           'name': 'LRP深層淨膚泥面膜',
           'oPrice': 1100,
           'price': 999,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc04',
+          'id': 4,
           'name': '萊萃美超級B群加C錠',
           'oPrice': 3100,
           'price': 2500,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc05',
+          'id': 5,
           'name': '萊萃美超級B群加C錠',
           'oPrice': 3100,
           'price': 2500,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc06',
+          'id': 6,
           'name': '三多L-麩醯胺酸鋅',
           'oPrice': 110,
           'price': 99,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc07',
+          'id': 7,
           'name': '曼秀雷敦全家潤唇膏',
           'oPrice': 110,
           'price': 99,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc08',
+          'id': 8,
           'name': 'LRP深層淨膚泥面膜',
           'oPrice': 1100,
           'price': 999,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc09',
+          'id': 9,
           'name': '萊萃美超級B群加C錠',
           'oPrice': 3100,
           'price': 2500,
           'url': '/img/product-1.png'
         },
         {
-          'id': 'pc10',
+          'id': 10,
           'name': '萊萃美超級B群加C錠',
           'oPrice': 3100,
           'price': 2500,
