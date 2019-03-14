@@ -15,10 +15,10 @@
           background-color: transparent;
           color:#fff;
           transition: .3s;
-          &:hover{
-            color: $cus-menuBar-second;
-            background-color: #fff;
-          }
+          // &:hover{
+          //   color: $cus-menuBar-second;
+          //   background-color: #fff;
+          // }
           &.router-link-exact-active{
             color: $cus-menuBar-second;
             background-color: #fff;
@@ -27,9 +27,30 @@
       }
     }
   }
+  // hover效果
+  @media screen and (min-width: 768px) {
+    .mem-cate-box{
+      .mem-cate{
+        >nav.nav{
+          a.nav-link{
+            &:hover{
+              color: $cus-menuBar-second;
+              background-color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
   @media screen and (max-width: 767px) {
     .mem-cate-box{
+      position: fixed;
+      top: 105px;
+      left: 0;
+      z-index: 1030;
+      width: 100%;
       flex:1;
+      transition:  .3s;
       .mem-cate{
         // background-color: $cus-menuBar-bg;
         background-color: #fff;
@@ -52,10 +73,22 @@
           }
         }
       }
+      // rwd 偏移 側邊欄開啟
+      &.rwdSwitchOn{
+        left: 50%;
+      }
     }
     .rwd-nav{
       flex-wrap: nowrap;
       overflow-x: auto;
+    }
+  }
+  @media screen and (max-width: 575px) {
+    .mem-cate-box{
+      // rwd 偏移 側邊欄開啟
+      &.rwdSwitchOn{
+        left: 80%;
+      }
     }
   }
 }
