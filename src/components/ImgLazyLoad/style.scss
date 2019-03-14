@@ -40,9 +40,10 @@
   @include imgSize(productImg, transparent,100%, 60%) ;
   @include imgSize(productItemImg, transparent,100%, 80%) ;
   @include imgSize(zfActBox, #fff,60%, 100%) ;
-  @include imgSize(vendorBoxArea, #fff, 33%, 60%) ; 
+  @include imgSize(vendorBoxArea, #fff, 33%, 100%) ; 
   @include imgSize(adBoxArea, transparent,20%, 100%) ;
-  @include imgSize(navAdBox, #fff,50%, 100%) ;
+  @include imgSize(navAdBox, #fff,96%, 100%) ;
+  @include imgSize(adBox2x1, #fff,50%, 100%) ;
   @include imgSize(cartProductImg, transparent,100%, 90%) ;
 }
 

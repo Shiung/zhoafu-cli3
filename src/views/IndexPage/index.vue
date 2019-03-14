@@ -55,15 +55,15 @@ export default {
         this.bannerList = [
           {
             id: 1,
-            url: 'https://fakeimg.pl/1200x400/5e93cd/ffffff/?text=banner1'
+            url: 'https://fakeimg.pl/1200x400/cccccc/ffffff/?text=w1200 3:1'
           },
           {
             id: 2,
-            url: 'https://fakeimg.pl/1200x400/eaca39/ffffff/?text=banner2'
+            url: 'https://fakeimg.pl/1200x400/cccccc/ffffff/?text=w1200 3:1'
           },
           {
             id: 3,
-            url: 'https://fakeimg.pl/1200x400/d7433c/ffffff/?text=banner3'
+            url: 'https://fakeimg.pl/1200x400/cccccc/ffffff/?text=w1200 3:1'
           }
         ]
         console.log('順序1 banner')
@@ -98,7 +98,7 @@ export default {
           params
         }).then((res) => {
           this.recommendProductsList = res.data.data
-          this.recommendBanner = '/img/act_test.png'
+          this.recommendBanner = 'https://fakeimg.pl/500x250/cccccc/ffffff/?text=w500 2:1'
           this.recommendproductShowLoading = false
           console.log('推薦商品')
           resolve(true)
@@ -116,7 +116,7 @@ export default {
           params
         }).then((res) => {
           this.fastProductsList = res.data.data
-          this.fastBanner = '/img/act_test.png'
+          this.fastBanner = 'https://fakeimg.pl/500x250/cccccc/ffffff/?text=w500 2:1'
           this.fastproductShowLoading = false
           console.log('秒殺商品')
           resolve(true)
@@ -151,7 +151,7 @@ export default {
           params
         }).then((res) => {
           this.actListAPI = res.data.data
-          this.actImg = '/img/act_test.png'
+          this.actImg = 'https://fakeimg.pl/500x300/cccccc/ffffff/?text=w500 5:3'
           this.actShowLoading = false
           console.log('最後')
           resolve(true)
@@ -163,16 +163,16 @@ export default {
       return new Promise((resolve, reject) => {
         this.hotVendor = [
           {
-            'img': '/img/vendor-1.png'
+            'img': 'https://fakeimg.pl/200x100/cccccc/ffffff/?text=w200 2:1'
           },
           {
-            'img': '/img/vendor-2.png'
+            'img': 'https://fakeimg.pl/200x100/cccccc/ffffff/?text=w200 2:1'
           },
           {
-            'img': '/img/vendor-3.png'
+            'img': 'https://fakeimg.pl/200x100/cccccc/ffffff/?text=w200 2:1'
           },
           {
-            'img': '/img/vendor-4.png'
+            'img': 'https://fakeimg.pl/200x100/cccccc/ffffff/?text=w200 2:1'
           }
         ]
         this.vendorShowLoading = false
@@ -185,10 +185,10 @@ export default {
       return new Promise((resolve, reject) => {
         this.advertisement = [
           {
-            'img': '/img/ad-1.png'
+            'img': 'https://fakeimg.pl/400x100/cccccc/ffffff/?text=w400 4:1'
           },
           {
-            'img': '/img/ad-2.png'
+            'img': 'https://fakeimg.pl/400x100/cccccc/ffffff/?text=w400 4:1'
           }
         ]
         this.adShowLoading = false

@@ -93,7 +93,7 @@
           <div class="row d-flex align-items-center">
             <div class="col-md-5 col-12">
               <transition name="fade" mode="out-in" appear>
-                <imgLazyLoading class="zfActBox" :imgUrl="recommendBanner" v-if="recommendBanner"/>
+                <imgLazyLoading class="adBox2x1" :imgUrl="recommendBanner" v-if="recommendBanner"/>
               </transition>
             </div>
             <div class="col-md-7 col-12 py-md-0 py-3">
@@ -120,7 +120,7 @@
 
       <!-- 供應商 及 廣告 -->
       <div class="col-12 mt-3">
-        <h4 class="text-center zf-title">熱門供應商</h4>
+        <h4 class="text-center zf-title">熱門品牌</h4>
       </div>
       <div class="col-12 mb-3">
         <div class="d-flex flex-wrap flex-margin-box-adjust position-relative loadingMinHeight">
@@ -132,7 +132,7 @@
             loader="dots"
           >
           </loading>
-          <div class="vendor-box mb-3" v-for="item in hotVendor" :key="item.img">
+          <div class="vendor-box mb-3" v-for="(item, key) in hotVendor" :key="key">
               <transition name="fade" mode="out-in" appear>
                 <imgLazyLoading class="vendorBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
               </transition>
@@ -149,7 +149,7 @@
             loader="dots"
           >
           </loading>
-          <div class="ad-box mb-3" v-for="item in advertisement" :key="item.img">
+          <div class="ad-box mb-3" v-for="(item, key) in advertisement" :key="key">
               <transition name="fade" mode="out-in" appear>
                 <imgLazyLoading class="adBoxArea" :imgUrl="item.img" imgError="img/image_error_3x1.png"/>
               </transition>
@@ -194,7 +194,7 @@
             </div>
             <div class="col-md-5 col-12">
               <transition name="fade" mode="out-in" appear>
-                <imgLazyLoading class="zfActBox" :imgUrl="fastBanner" v-if="fastBanner"/>
+                <imgLazyLoading class="adBox2x1" :imgUrl="fastBanner" v-if="fastBanner"/>
               </transition>
             </div>
           </div>
