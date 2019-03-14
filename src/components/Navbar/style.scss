@@ -88,7 +88,7 @@ $menuBar3Width : 400px;
         >a{
           // padding: 5px 30px;
           padding: 10px 30px;
-          color:$cus-green;
+          color:  darken($cus-green, 15%) ;
           transition: color .3s , padding .3s; 
         }
         .secondMenu{

@@ -64,12 +64,14 @@ body{
 // css selected
 ::-moz-selection { /* Code for Firefox */
   color: #fff !important;
-  background: $cus-green !important;
+  // background: $cus-green !important;
+  background: #ccc !important;
 }
 
 ::selection {
   color: #fff !important;
-  background: $cus-green !important;
+  // background: $cus-green !important;
+  background: #ccc !important;
 }
 // css selected ---end
 

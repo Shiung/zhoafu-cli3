@@ -73,6 +73,10 @@ export default new Router({
           component: () => import(/* webpackChunkName: "login" */ '@/views/Login')
         }
       ]
+    },
+    {
+      path: '*',
+      component: () => import(/* webpackChunkName: "404" */ '@/views/PageNotFound.vue')
     }
     // {
     //   path: '/about',
