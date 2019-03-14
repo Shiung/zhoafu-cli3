@@ -28,7 +28,6 @@ import zhTwValidate from 'vee-validate/dist/locale/zh_TW'
 // filters
 import currencyFilter from './filters/currency'
 // 置頂function
-import initTop from './assets/js/initTop.js' // 初始置頂
 
 Vue.config.productionTip = false
 
@@ -80,8 +79,11 @@ new Vue({
 // 導航守衛 ==> 要在router 變動下才會觸發
 router.beforeEach((to, from, next) => {
   next()
-  // 置頂function
-  initTop()
   // 跳頁關閉rwd 開關
   store.dispatch('menu_status', false)
+})
+
+// 跳轉頁面後返回頂部
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0)
 })
