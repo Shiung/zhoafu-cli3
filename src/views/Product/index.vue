@@ -12,6 +12,7 @@ export default {
       productPrice: null,
       productStock: 0,
       productStockUnit: null, // 單位
+      productJoint: [],
       // api path
       apiPath: `${process.env.VUE_APP_APIPATH}`,
       // 相關商品
@@ -64,11 +65,16 @@ export default {
         resolve(true)
       })
     },
+    reloadInint () {
+      return new Promise((resolve, reject) => {
+        // 初始
+        this.productShowLoading = true
+        this.relateProductShowLoading = true
+        this.showImg = false
+        resolve(true)
+      })
+    },
     getProduct () {
-      // 初始
-      this.productShowLoading = true
-      this.showImg = false
-      // api
       let url = `${this.apiPath}/merchandise/${this.productID}`
       return new Promise((resolve, reject) => {
         this.axios.get(url).then((res) => {
@@ -78,6 +84,7 @@ export default {
           this.productPrice = res.data.data.price
           this.countNum = res.data.data.stock === 0 ? res.data.data.stock : 1
           this.productStockUnit = res.data.data.unit
+          console.log(res.data.data.joint_procurement_level)
           // 商品圖片
           this.productImg = '/img/product-1.png'
           this.imgList = [
@@ -107,9 +114,6 @@ export default {
     },
     // 相關商品
     getActProductList () {
-      // 初始
-      this.relateProductShowLoading = true
-      // api
       let url = `${this.apiPath}/merchandise`
       return new Promise((resolve, reject) => {
         this.axios.get(url).then((res) => {
@@ -132,11 +136,13 @@ export default {
     }
   },
   async mounted () {
+    await this.reloadInint()
     await this.getProduct()
     await this.getActProductList()
   },
   watch: {
     async productID (val, old) {
+      await this.reloadInint()
       await this.getProduct()
       await this.getActProductList()
     }
