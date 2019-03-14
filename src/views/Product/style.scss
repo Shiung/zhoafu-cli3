@@ -277,11 +277,15 @@ $expiry-bg: #e2eefd;
       .product-cate-menu{
         >.nav-item{
           >a{
-            font-size: 12px;
+            // font-size: 12px;
             padding-right: 0;
             padding-left: 0;
           }
         }
+      }
+
+      .product-cate-box{
+        padding: 20px 15px;
       }
     }
   }
